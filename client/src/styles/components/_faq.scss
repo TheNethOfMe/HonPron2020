@@ -1,0 +1,16 @@
+.faq-item {
+  @extend %card-stock;
+}
+
+.faq-item_question {
+  color: $accent-color;
+  font-family: $main-font;
+  padding: 5px;
+}
+
+.faq-item_answer {
+  color: $snes-blue;
+  font-family: $article-text;
+  line-height: 1.4em;
+  padding: 8px;
+}

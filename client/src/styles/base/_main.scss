@@ -1,0 +1,16 @@
+body {
+  background: black;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-container {
+  background: $background-color;
+  margin: 0 auto;
+  max-width: $hp-max-width;
+  padding: 0.5em;
+  width: 90%;
+}

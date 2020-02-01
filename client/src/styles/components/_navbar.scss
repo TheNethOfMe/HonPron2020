@@ -1,0 +1,32 @@
+.navbar {
+  background: $card-color;
+  border-bottom: $accent-color 3px solid;
+  color: $text-color;
+  font-size: 1.2em;
+  height: 7vh;
+  .navbar-inner {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $hp-max-width;
+    width: 90%;
+    .navbar_left {
+      color: $accent-color;
+      font-family: $accent-text;
+    }
+    .navbar_right ul {
+      display: flex;
+      flex-direction: row;
+      li {
+        color: $snes-gray;
+        font-family: $main-font;
+        padding: 0.5em;
+        &:hover {
+          color: $snes-blue;
+        }
+      }
+    }
+  }
+}

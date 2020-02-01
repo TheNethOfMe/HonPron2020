@@ -1,0 +1,58 @@
+.hp-form {
+  background: $background-color;
+  color: white;
+  font-family: $main-font;
+  font-weight: bold;
+  margin: 5em auto;
+  width: 90%;
+  h2 {
+    color: $snes-blue;
+    font-size: 2em;
+    padding: 8px;
+    text-align: center;
+  }
+  h3 {
+    color: $snes-lite;
+    font-size: 1.3em;
+    padding: 8px;
+    text-align: center;
+  }
+  .hp-form_container {
+    @extend %card-stock;
+  }
+}
+
+.hp-input {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3em;
+  font-weight: normal;
+  margin: 1em auto;
+  width: 80%;
+}
+
+.hp-input_label {
+  @extend %screen-reader;
+}
+
+.hp-input_field {
+  border-radius: 10px;
+  color: $snes-gray;
+  font-family: $main-font;
+  font-size: 1em;
+  outline: none;
+  padding: 8px;
+  &:focus {
+    @include box-shadow(0px, 0px, 5px, 5px, $accent-color);
+  }
+}
+
+.hp-input_info {
+  color: $snes-purple;
+}
+
+.hp-form_btn {
+  @include btn-color($snes-purple, $snes-blue, $snes-lite, $background-color);
+  margin: 1em auto;
+  width: 80%;
+}

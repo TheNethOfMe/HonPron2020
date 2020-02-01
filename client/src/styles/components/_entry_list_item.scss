@@ -1,0 +1,49 @@
+.entry-list-item {
+  @extend %card-stock;
+  h2 {
+    color: $accent-color;
+    font-family: $accent-text;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.entry-list-item_head {
+  color: $snes-gray;
+  display: flex;
+  flex-direction: row;
+  font-family: $main-font;
+  justify-content: space-between;
+}
+
+.entry-list-item_img {
+  margin: 0 auto;
+  width: 75%;
+  img {
+    padding: 5px;
+    width: 100%;
+  }
+}
+
+.entry-list-item_date {
+  color: $snes-gray;
+  font-family: $main-font;
+}
+
+.entry-list-item_desc {
+  font-family: $article-text;
+  line-height: 1.2em;
+  text-align: center;
+}
+
+.entry-list-item_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5px;
+  span {
+    color: $snes-gray;
+    font-family: $main-font;
+    text-align: center;
+  }
+}

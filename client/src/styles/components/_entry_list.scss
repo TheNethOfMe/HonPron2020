@@ -1,0 +1,29 @@
+.entry-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .entry-container_list {
+    width: 75%;
+  }
+  .entry-container_menu {
+    width: 23%;
+  }
+}
+
+.entry-container_main-menu {
+  @extend %card-stock;
+}
+
+.entry-container_menu-item {
+  font-family: $main-font;
+  margin: 5px;
+}
+
+.main {
+  color: $accent-color;
+}
+
+.sub {
+  color: $snes-blue;
+  padding-left: 18px;
+}

@@ -1,0 +1,15 @@
+@mixin box-shadow($top, $left, $blur, $spread, $color) {
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  -moz-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
+}
+
+@mixin btn-color($color, $hover, $text, $text-hover) {
+  background: $color;
+  color: $text;
+  &:hover,
+  &:focus {
+    background: $hover;
+    color: $text-hover;
+  }
+}

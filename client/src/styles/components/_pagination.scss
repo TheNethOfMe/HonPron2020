@@ -1,0 +1,25 @@
+.pagination {
+  align-items: center;
+  background: $card-color;
+  color: $accent-color;
+  display: flex;
+  font-family: $accent-text;
+  justify-content: center;
+  padding: 5px;
+  text-align: center;
+  span {
+    padding: 15px;
+  }
+}
+
+.pagination_arrow.active {
+  font-size: 1.7em;
+  &:hover {
+    color: $snes-blue;
+    cursor: pointer;
+  }
+}
+
+.greyed {
+  color: $snes-gray;
+}
