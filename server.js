@@ -47,9 +47,6 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// Set static folder
-app.use(express.static(path.join(__dirname, "public")));
-
 // Mount routers
 app.use("/api/v1/whitelist", whitelist);
 app.use("/api/v1/entries", entries);
@@ -63,6 +60,14 @@ app.use("/api/v1/comments", comments);
 app.use("/api/v1/faqs", faqs);
 
 app.use(errorHandler);
+
+// Set static folder and front-end routes in production mode
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 const server = app.listen(
