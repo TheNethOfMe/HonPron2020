@@ -9,7 +9,7 @@ exports.getSeries = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedData);
 });
 
-// @desc    Create an Series
+// @desc    Create a Series
 // @route   POST /api/v1/series
 // @access  Private/Admin
 exports.createSeries = asyncHandler(async (req, res, next) => {
@@ -18,7 +18,7 @@ exports.createSeries = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Get one Series with all Entries in series
-// @route   GET /api/v1/series/:id
+// @route   GET /api/v1/series/:slug
 // @access  Public
 exports.getOneSeriesWithEntries = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedSeries);
