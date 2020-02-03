@@ -182,7 +182,7 @@ exports.advancedSeries = () => async (req, res, next) => {
   // Construct query for match property
   let queryObj;
   queryObj = formatQuery(reqQuery);
-  queryObj.series = new ObjectId(req.params.id);
+  // queryObj.series = new ObjectId(req.params.id);
 
   // Start constructing populate params
   let populateParams = {
@@ -213,7 +213,9 @@ exports.advancedSeries = () => async (req, res, next) => {
   populateParams.options = populateOptions;
 
   // execute query
-  const series = await Series.findById(req.params.id).populate(populateParams);
+  const series = await Series.findOne({ slug: req.params.slug }).populate(
+    populateParams
+  );
 
   // Pagination result
   const pagination = returnPagination(pageData);

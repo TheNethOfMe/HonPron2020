@@ -11,7 +11,7 @@ const ListItemHead = ({ series, icon }) => {
 };
 
 ListItemHead.propTypes = {
-  series: PropTypes.string.isRequired,
+  series: PropTypes.string,
   icon: PropTypes.string.isRequired
 };
 

@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, Fragment } from "react";
 
 import EntryContext from "../../context/entries/entryContext";
-import EntryList from "../entries/EntryList";
-import Pagination from "../entries/parts/Pagination";
-
-import MenuWithContext from "../menu/MenuWithContext";
+import EntryList from "../entry-list/EntryList";
+import Pagination from "../entry-list/parts/Pagination";
 
 const Entries = () => {
   const entryContext = useContext(EntryContext);
@@ -16,22 +14,16 @@ const Entries = () => {
     // eslint-disable-next-line
   }, [page]);
   return (
-    <div className="entry-container">
-      <div className="entry-container_list">
-        <EntryList entries={entries} />
-        {!!Object.keys(pagination) && (
-          <Pagination
-            page={page}
-            pagination={pagination}
-            handlePagination={setPage}
-          />
-        )}
-      </div>
-
-      <div className="entry-container_menu">
-        <MenuWithContext />
-      </div>
-    </div>
+    <Fragment>
+      <EntryList entries={entries} />
+      {!!Object.keys(pagination) && (
+        <Pagination
+          page={page}
+          pagination={pagination}
+          handlePagination={setPage}
+        />
+      )}
+    </Fragment>
   );
 };
 

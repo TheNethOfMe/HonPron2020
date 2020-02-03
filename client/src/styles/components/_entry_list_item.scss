@@ -1,5 +1,6 @@
 .entry-list-item {
   @extend %card-stock;
+  display: block;
   h2 {
     color: $accent-color;
     font-family: $accent-text;

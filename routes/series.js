@@ -23,9 +23,10 @@ router
   .get(advancedQuery(Series), getSeries)
   .post(protect, adminOnly(), createSeries);
 
+router.route("/:slug").get(advancedSeries(), getOneSeriesWithEntries);
+
 router
   .route("/:id")
-  .get(advancedSeries(), getOneSeriesWithEntries)
   .put(protect, adminOnly(), updateSeries)
   .delete(protect, adminOnly(), deleteSeries);
 
