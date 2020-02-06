@@ -9,6 +9,9 @@ const FaqSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  order: {
+    type: Number
+  },
   dateAdded: {
     type: Date,
     default: Date.now

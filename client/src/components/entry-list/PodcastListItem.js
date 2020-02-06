@@ -22,7 +22,7 @@ const PodcastListItem = ({ entry }) => {
       <ListItemDetails
         date={entry.dateAdded}
         title={entry.title}
-        description={entry.description}
+        description={entry.description.split("\n")[0]}
       />
       <ListItemFooter duration={entry.duration} />
     </Fragment>
