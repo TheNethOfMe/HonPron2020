@@ -21,7 +21,9 @@ const SingleSeries = () => {
   }, [page]);
   return (
     <Fragment>
-      <SeriesListItem singleSeries={singleSeries} />
+      <div className="entry-list-item">
+        <SeriesListItem singleSeries={singleSeries} />
+      </div>
       <EntryList entries={seriesEntries} />
       {!!Object.keys(entriesPage).length && (
         <Pagination

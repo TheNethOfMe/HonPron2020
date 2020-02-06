@@ -18,7 +18,7 @@ exports.getEntries = asyncHandler(async (req, res, next) => {
 exports.createEntry = asyncHandler(async (req, res, next) => {
   let entryData = req.body;
   if (req.files && req.files.file) {
-    entryData = uploadImg(req.files.file, entryData);
+    entryData = uploadImg(req.files.file, entryData, "entry-img", "title");
   } else {
     entryData = {
       ...entryData,
