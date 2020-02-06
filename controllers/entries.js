@@ -3,6 +3,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/asyncHandler");
 const path = require("path");
 const getFormattedGameList = require("../utils/getFormattedGameList");
+const uploadImg = require("../utils/uploadImg");
 
 // @desc    Get all Entries
 // @route   GET /api/v1/entries
@@ -15,7 +16,17 @@ exports.getEntries = asyncHandler(async (req, res, next) => {
 // @route   POST /api/v1/entries
 // @access  Private/Admin
 exports.createEntry = asyncHandler(async (req, res, next) => {
-  const entry = await Entry.create(req.body);
+  let entryData = req.body;
+  if (req.files && req.files.file) {
+    entryData = uploadImg(req.files.file, entryData);
+  } else {
+    entryData = {
+      ...entryData,
+      image: "default.jpg",
+      imageAlt: "Default Image"
+    };
+  }
+  const entry = await Entry.create(entryData);
   res.status(201).json({ success: true, data: entry });
 });
 
@@ -101,46 +112,4 @@ exports.deleteEntry = asyncHandler(async (req, res, next) => {
   }
   entry.remove();
   res.status(200).json({ success: true, data: {} });
-});
-
-// @desc    Upload photo
-// @route   PUT /api/v1/entries/:id/photo
-// @access  Private/Admin
-exports.entryPhotoUpload = asyncHandler(async (req, res, next) => {
-  const entry = await Entry.findById(req.params.id);
-  if (!entry) {
-    return next(
-      new ErrorResponse(`Entry not found with id of ${req.params.id}`, 404)
-    );
-  }
-  if (!req.files) {
-    return next(new ErrorResponse("Please upload a file.", 400));
-  }
-  const file = req.files.file;
-  // Make sure image is photo
-  if (!file.mimetype.startsWith("image")) {
-    return next(new ErrorResponse("Uploaded file must be an image", 400));
-  }
-
-  // Check filesize
-  if (file.size > process.env.MAX_FILE_UPLOAD) {
-    return next(
-      new ErrorResponse(
-        `Please upload a file smaller than ${process.env.MAX_FILE_UPLOAD}`,
-        400
-      )
-    );
-  }
-
-  // Create custom filename
-  file.name = `photo_${entry._id}${path.parse(file.name).ext}`;
-
-  file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
-    if (err) {
-      console.error(err);
-      return next(new ErrorResponse("Problem uploading file.", 500));
-    }
-    await Entry.findByIdAndUpdate(req.params._id, { image: file.name });
-    res.status(200).json({ success: true, data: file.name });
-  });
 });

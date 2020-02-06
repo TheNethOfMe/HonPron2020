@@ -33,6 +33,9 @@ const EntrySchema = new mongoose.Schema(
     image: {
       type: String
     },
+    imageAlt: {
+      type: String
+    },
     // podcast and video only
     urlId: {
       type: String
