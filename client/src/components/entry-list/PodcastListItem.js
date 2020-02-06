@@ -7,8 +7,14 @@ import ListItemDetails from "./parts/ListItemDetails";
 import ListItemFooter from "./parts/ListItemFooter";
 
 const PodcastListItem = ({ entry }) => {
-  const srcImg = require("../../img/test.jpg");
-  const imgAlt = "This is just a test image.";
+  let srcImg, imgAlt;
+  if (!!entry.image) {
+    srcImg = require(`../../img/entry-img/${entry.image}`);
+    imgAlt = entry.imageAlt;
+  } else {
+    srcImg = require("../../img/test.jpg");
+    imgAlt = "This is just a test image";
+  }
   return (
     <Fragment>
       <ListItemHead series={entry.series.series} icon="fas fa-podcast" />

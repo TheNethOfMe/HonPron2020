@@ -5,18 +5,14 @@ const {
   createEntry,
   getEntry,
   updateEntry,
-  deleteEntry,
-  entryPhotoUpload
+  deleteEntry
 } = require("../controllers/entries");
 
-// const Entry = require("../models/Entry");
 const { advancedEntries } = require("../middleware/advancedQuery");
 const { protect, adminOnly } = require("../middleware/auth");
 
 const commentRouter = require("./comments");
 router.use("/:entryId/comment", commentRouter);
-
-router.route("/:id/photo").put(protect, adminOnly(), entryPhotoUpload);
 
 router
   .route("/")

@@ -15,6 +15,12 @@ const SeriesSchema = new mongoose.Schema(
     seriesDesc: {
       type: String
     },
+    image: {
+      type: String
+    },
+    imageAlt: {
+      type: String
+    },
     slug: {
       type: String
     },

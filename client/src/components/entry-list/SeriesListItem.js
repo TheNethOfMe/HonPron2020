@@ -1,14 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const SeriesListItem = ({ singleSeries }) => {
+  let banner;
+  if (singleSeries.image) {
+    banner = require(`../../img/series-img/${singleSeries.image}`);
+  }
   return (
-    <Link
-      to={`/series/${singleSeries.slug}`}
-      params={{ id: singleSeries._id }}
-      className="entry-list-item"
-    >
+    <Fragment>
+      {banner && <img src={banner} alt={singleSeries.imageAlt} />}
       <h2>
         {singleSeries.seriesName} -{" "}
         <i
@@ -20,7 +21,7 @@ const SeriesListItem = ({ singleSeries }) => {
         ></i>
       </h2>
       <p>{singleSeries.seriesDesc}</p>
-    </Link>
+    </Fragment>
   );
 };
 
