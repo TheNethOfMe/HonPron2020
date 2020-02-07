@@ -10,3 +10,5 @@ export const GET_ONE_SERIES = "GET_ONE_SERIES";
 export const GET_MENU = "GET_MENU";
 
 export const GET_FAQS = "GET_FAQS";
+
+export const GET_CURRENT_LIST = "GET_CURRENT_LIST";

@@ -18,6 +18,11 @@ import Series from "./components/pages/Series";
 import SingleSeries from "./components/pages/SingleSeries";
 import SeriesState from "./context/series/seriesState";
 
+import CurrentSnesList from "./components/pages/CurrentSnesList";
+import GameListState from "./context/gamelist/gamelistState";
+
+import Contact from "./components/pages/Contact";
+
 import "./App.scss";
 
 function App() {
@@ -54,10 +59,17 @@ function App() {
               />
               <MenuComponent
                 exact
+                path="/snes"
+                component={CurrentSnesList}
+                context={GameListState}
+              />
+              <MenuComponent
+                exact
                 path="/about"
                 component={About}
                 context={FaqState}
               />
+              <Route exact path="/contact" component={Contact} />
               <Route exact path="/login" component={Login} />
             </Switch>
           </div>
