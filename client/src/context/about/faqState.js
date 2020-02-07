@@ -14,7 +14,7 @@ const FaqState = props => {
   // Get faqs
   const getFaqs = async () => {
     try {
-      const res = await axios.get("/api/v1/faqs");
+      const res = await axios.get("/api/v1/faqs?sort=order");
       dispatch({
         type: GET_FAQS,
         payload: res.data.data

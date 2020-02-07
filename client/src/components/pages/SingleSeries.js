@@ -5,7 +5,7 @@ import SeriesListItem from "../entry-list/SeriesListItem";
 import EntryList from "../entry-list/EntryList";
 import Pagination from "../entry-list/parts/Pagination";
 
-const SingleSeries = () => {
+const SingleSeries = ({ match }) => {
   const seriesContext = useContext(SeriesContext);
   const {
     singleSeries,
@@ -15,7 +15,7 @@ const SingleSeries = () => {
   } = seriesContext;
   const [page, setPage] = useState(1);
   useEffect(() => {
-    const slug = window.location.pathname.split("/")[2];
+    const slug = match.params.name;
     getOneSeries(slug, { page });
     // eslint-disable-next-line
   }, [page]);
