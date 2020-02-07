@@ -4,12 +4,16 @@ import EntryContext from "../../context/entries/entryContext";
 import EntryList from "../entry-list/EntryList";
 import Pagination from "../entry-list/parts/Pagination";
 
-const Entries = () => {
+const Entries = ({ match }) => {
   const entryContext = useContext(EntryContext);
   const { entries, pagination, getEntries } = entryContext;
   const [page, setPage] = useState(1);
   useEffect(() => {
-    getEntries({ page });
+    let query = { page };
+    if (match.params.type) {
+      query.entryType = match.params.type;
+    }
+    getEntries(query);
     window.scrollTo(0, 0);
     // eslint-disable-next-line
   }, [page]);

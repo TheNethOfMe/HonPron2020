@@ -36,9 +36,9 @@ function App() {
               />
               <MenuComponent
                 exact
-                path="/about"
-                component={About}
-                context={FaqState}
+                path="/entries/:type"
+                component={Entries}
+                context={EntryState}
               />
               <MenuComponent
                 exact
@@ -51,6 +51,12 @@ function App() {
                 path="/series/:name"
                 component={SingleSeries}
                 context={SeriesState}
+              />
+              <MenuComponent
+                exact
+                path="/about"
+                component={About}
+                context={FaqState}
               />
               <Route exact path="/login" component={Login} />
             </Switch>
