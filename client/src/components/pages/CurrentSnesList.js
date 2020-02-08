@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import GamelistContext from "../../context/gamelist/gamelistContext";
-import SnesList from "../entry-list/parts/SnesList";
+import SnesList from "../entries/entry-parts/SnesList";
 
 const CurrentSnesList = () => {
   const gamelistContext = useContext(GamelistContext);

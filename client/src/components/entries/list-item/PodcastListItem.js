@@ -1,18 +1,19 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import ListItemHead from "./parts/ListItemHead";
-import ListItemImg from "./parts/ListItemImg";
-import ListItemDetails from "./parts/ListItemDetails";
-import ListItemFooter from "./parts/ListItemFooter";
+import ListItemHead from "../entry-parts/ListItemHead";
+import ListItemImg from "../entry-parts/ListItemImg";
+import ListItemDetails from "../entry-parts/ListItemDetails";
+import ListItemFooter from "../entry-parts/ListItemFooter";
 
 const PodcastListItem = ({ entry }) => {
   let srcImg, imgAlt;
   if (!!entry.image) {
-    srcImg = require(`../../img/entry-img/${entry.image}`);
+    // srcImg = require(`../../img/entry-img/${entry.image}`);
+    srcImg = require(`../../../img/entry-img/${entry.image}`);
     imgAlt = entry.imageAlt;
   } else {
-    srcImg = require("../../img/test.jpg");
+    srcImg = require("../../../img/test.jpg");
     imgAlt = "This is just a test image";
   }
   return (

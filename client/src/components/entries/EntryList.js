@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import PodcastListItem from "./PodcastListItem";
-import VideoListItem from "./VideoListItem";
-import BlogListItem from "./BlogListItem";
+import PodcastListItem from "./list-item/PodcastListItem";
+import VideoListItem from "./list-item/VideoListItem";
+import BlogListItem from "./list-item/BlogListItem";
 
 const EntryList = ({ entries }) => {
   return (
