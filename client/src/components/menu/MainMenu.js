@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import MenuContext from "../../context/menu/menuContext";
 
 const MainMenu = () => {
@@ -9,15 +10,16 @@ const MainMenu = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="entry-container_main-menu">
+    <div className="main-container_main-menu">
       {menuItems.map(item => {
         return (
-          <div
+          <Link
             key={item._id}
-            className={`entry-container_menu-item ${item.menuType}`}
+            className={`main-container_menu-item ${item.menuType}`}
+            to={item.url}
           >
             {item.displayText}
-          </div>
+          </Link>
         );
       })}
     </div>

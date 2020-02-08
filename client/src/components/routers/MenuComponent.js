@@ -14,11 +14,11 @@ const BasicComponent = ({
       {...rest}
       render={props => (
         <Context>
-          <div className="entry-container">
-            <div className="entry-container_list">
+          <div className="main-container">
+            <div className="main-container_list">
               <Component {...props} />
             </div>
-            <div className="entry-container_menu">
+            <div className="main-container_menu">
               <MenuState>
                 <MainMenu />
               </MenuState>

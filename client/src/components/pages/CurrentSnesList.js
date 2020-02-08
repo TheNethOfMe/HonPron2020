@@ -13,8 +13,7 @@ const CurrentSnesList = () => {
   return (
     <div className="current-rankings">
       <h2>Current SNEScapades Rankings</h2>
-      {console.log(gamelist)}
-      <SnesList list={gamelist} test="Hi" />
+      <SnesList list={gamelist} />
     </div>
   );
 };

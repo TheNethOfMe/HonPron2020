@@ -6,6 +6,7 @@ import MenuComponent from "../routers/MenuComponent";
 import Login from "../auth/Login";
 
 import Entries from "../pages/Entries";
+import SingleEntry from "../pages/SingleEntry";
 import EntryState from "../../context/entries/entryState";
 
 import About from "../pages/About";
@@ -28,6 +29,12 @@ const MainRouter = () => {
           exact
           path="/"
           component={Entries}
+          context={EntryState}
+        />
+        <MenuComponent
+          exact
+          path="/entry/:id"
+          component={SingleEntry}
           context={EntryState}
         />
         <MenuComponent

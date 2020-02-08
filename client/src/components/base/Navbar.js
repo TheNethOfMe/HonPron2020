@@ -13,7 +13,11 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <div className="navbar_left">Honest Piranha</div>
+        <div className="navbar_left">
+          <Link to="/" className="navbar_left-brand">
+            Honest Piranha
+          </Link>
+        </div>
         <div className="navbar_right">
           <ul>
             <li>

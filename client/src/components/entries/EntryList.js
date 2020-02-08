@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import PodcastListItem from "./list-item/PodcastListItem";
@@ -9,7 +10,11 @@ const EntryList = ({ entries }) => {
   return (
     <Fragment>
       {entries.map(entry => (
-        <div key={entry._id} className="entry-list-item">
+        <Link
+          to={`/entry/${entry._id}`}
+          key={entry._id}
+          className="entry-list-item"
+        >
           {entry.entryType === "podcast" ? (
             <PodcastListItem entry={entry} />
           ) : entry.entryType === "video" ? (
@@ -17,7 +22,7 @@ const EntryList = ({ entries }) => {
           ) : (
             <BlogListItem entry={entry} />
           )}
-        </div>
+        </Link>
       ))}
     </Fragment>
   );

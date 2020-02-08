@@ -15,6 +15,9 @@
     .navbar_left {
       color: $accent-color;
       font-family: $accent-text;
+      &:hover {
+        color: $snes-purple;
+      }
     }
     .navbar_right ul {
       display: flex;
