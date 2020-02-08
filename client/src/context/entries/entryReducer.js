@@ -1,4 +1,4 @@
-import { GET_ENTRIES } from "../types";
+import { GET_ENTRIES, GET_SINGLE_ENTRY } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -7,6 +7,11 @@ export default (state, action) => {
         ...state,
         entries: action.payload.data,
         pagination: action.payload.pagination
+      };
+    case GET_SINGLE_ENTRY:
+      return {
+        ...state,
+        single: action.payload.data
       };
     default:
       return {

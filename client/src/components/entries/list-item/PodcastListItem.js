@@ -9,7 +9,6 @@ import ListItemFooter from "../entry-parts/ListItemFooter";
 const PodcastListItem = ({ entry }) => {
   let srcImg, imgAlt;
   if (!!entry.image) {
-    // srcImg = require(`../../img/entry-img/${entry.image}`);
     srcImg = require(`../../../img/entry-img/${entry.image}`);
     imgAlt = entry.imageAlt;
   } else {
