@@ -1,27 +1,9 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import AuthState from "./context/auth/authState";
-import Login from "./components/auth/Login";
-
-// import BasicComponent from "./components/routers/BasicComponent";
-import MenuComponent from "./components/routers/MenuComponent";
 import Navbar from "./components/base/Navbar";
-
-import Entries from "./components/pages/Entries";
-import EntryState from "./context/entries/entryState";
-
-import About from "./components/pages/About";
-import FaqState from "./context/about/faqState";
-
-import Series from "./components/pages/Series";
-import SingleSeries from "./components/pages/SingleSeries";
-import SeriesState from "./context/series/seriesState";
-
-import CurrentSnesList from "./components/pages/CurrentSnesList";
-import GameListState from "./context/gamelist/gamelistState";
-
-import Contact from "./components/pages/Contact";
+import MainRouter from "./components/routers/MainRouter";
 
 import "./App.scss";
 
@@ -32,46 +14,7 @@ function App() {
         <Fragment>
           <Navbar />
           <div className="site-container">
-            <Switch>
-              <MenuComponent
-                exact
-                path="/"
-                component={Entries}
-                context={EntryState}
-              />
-              <MenuComponent
-                exact
-                path="/entries/:type"
-                component={Entries}
-                context={EntryState}
-              />
-              <MenuComponent
-                exact
-                path="/series"
-                component={Series}
-                context={SeriesState}
-              />
-              <MenuComponent
-                exact
-                path="/series/:name"
-                component={SingleSeries}
-                context={SeriesState}
-              />
-              <MenuComponent
-                exact
-                path="/snes"
-                component={CurrentSnesList}
-                context={GameListState}
-              />
-              <MenuComponent
-                exact
-                path="/about"
-                component={About}
-                context={FaqState}
-              />
-              <Route exact path="/contact" component={Contact} />
-              <Route exact path="/login" component={Login} />
-            </Switch>
+            <MainRouter />
           </div>
         </Fragment>
       </Router>
