@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import GamelistContext from "../../context/gamelist/gamelistContext";
-import SnesList from "../entry-list/parts/SnesList";
+import SnesList from "../entries/entry-parts/SnesList";
 
 const CurrentSnesList = () => {
   const gamelistContext = useContext(GamelistContext);
@@ -13,8 +13,7 @@ const CurrentSnesList = () => {
   return (
     <div className="current-rankings">
       <h2>Current SNEScapades Rankings</h2>
-      {console.log(gamelist)}
-      <SnesList list={gamelist} test="Hi" />
+      <SnesList list={gamelist} />
     </div>
   );
 };

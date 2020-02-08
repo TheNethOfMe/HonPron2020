@@ -7,6 +7,10 @@
     padding: 5px;
     text-align: center;
   }
+  &:hover {
+    border: $accent-color 1px solid;
+    cursor: pointer;
+  }
 }
 
 .entry-list-item_head {

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
 
 import EntryContext from "../../context/entries/entryContext";
-import EntryList from "../entry-list/EntryList";
-import Pagination from "../entry-list/parts/Pagination";
+import EntryList from "../entries/EntryList";
+import Pagination from "../entries/entry-parts/Pagination";
 
 const Entries = ({ match }) => {
   const entryContext = useContext(EntryContext);

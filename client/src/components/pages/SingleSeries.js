@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
 
 import SeriesContext from "../../context/series/seriesContext";
-import SeriesListItem from "../entry-list/SeriesListItem";
-import EntryList from "../entry-list/EntryList";
-import Pagination from "../entry-list/parts/Pagination";
+import SeriesListItem from "../entries/list-item/SeriesListItem";
+import EntryList from "../entries/EntryList";
+import Pagination from "../entries/entry-parts/Pagination";
 
 const SingleSeries = ({ match }) => {
   const seriesContext = useContext(SeriesContext);

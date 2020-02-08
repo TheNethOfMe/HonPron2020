@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const SeriesListItem = ({ singleSeries }) => {
   let banner;
   if (singleSeries.image) {
-    banner = require(`../../img/series-img/${singleSeries.image}`);
+    banner = require(`../../../img/entry-img/${singleSeries.image}`);
   }
   return (
     <Fragment>

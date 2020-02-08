@@ -1,22 +1,26 @@
-.entry-container {
+.main-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  .entry-container_list {
+  .main-container_list {
     width: 75%;
   }
-  .entry-container_menu {
+  .main-container_menu {
     width: 23%;
   }
 }
 
-.entry-container_main-menu {
+.main-container_main-menu {
   @extend %card-stock;
 }
 
-.entry-container_menu-item {
+.main-container_menu-item {
+  display: block;
   font-family: $main-font;
   margin: 5px;
+  &:hover {
+    color: $snes-purple;
+  }
 }
 
 .main {

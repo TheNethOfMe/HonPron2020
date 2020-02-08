@@ -1,0 +1,32 @@
+.single-entry {
+  @extend %card-stock;
+  h2 {
+    color: $accent-color;
+    font-family: $accent-text;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.single-entry-content {
+  display: flex;
+  justify-content: center;
+}
+
+.single-entry-list-btn {
+  background: $snes-purple;
+  color: $snes-blue;
+  font-family: $main-font;
+  margin: 1.2em auto;
+  transition: 10ms;
+  &:hover {
+    background: $snes-blue;
+    color: $snes-purple;
+  }
+}
+
+.single-entry ul li {
+  color: $snes-lite;
+  font-family: $accent-text;
+  padding: 4px;
+}

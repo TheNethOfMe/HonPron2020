@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
 
 import SeriesContext from "../../context/series/seriesContext";
-import SeriesList from "../entry-list/SeriesList";
-import Pagination from "../entry-list/parts/Pagination";
+import SeriesList from "../entries/SeriesList";
+import Pagination from "../entries/entry-parts/Pagination";
 
 const Series = () => {
   const seriesContext = useContext(SeriesContext);

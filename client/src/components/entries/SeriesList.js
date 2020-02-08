@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import SeriesListItem from "./SeriesListItem";
+import SeriesListItem from "../entries/list-item/SeriesListItem";
 
 const SeriesList = ({ series }) => {
   return (

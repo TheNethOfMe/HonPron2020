@@ -3,6 +3,7 @@ export const GET_USER = "GET_USER";
 export const LOGOUT = "LOGOUT";
 
 export const GET_ENTRIES = "GET_ENTRIES";
+export const GET_SINGLE_ENTRY = "GET_SINGLE_ENTRY";
 
 export const GET_ALL_SERIES = "GET_ALL_SERIES";
 export const GET_ONE_SERIES = "GET_ONE_SERIES";
