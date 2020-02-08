@@ -1,0 +1,15 @@
+.current-rankings {
+  h2 {
+    color: $accent-color;
+    font-family: $main-font;
+    font-size: 2em;
+    padding: 8px;
+    text-align: center;
+  }
+  ul li {
+    color: $snes-blue;
+    font-family: $accent-text;
+    line-height: 1.5em;
+    padding: 4px 0;
+  }
+}
