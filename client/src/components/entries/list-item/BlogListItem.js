@@ -7,12 +7,11 @@ import ListItemDetails from "../entry-parts/ListItemDetails";
 import ListItemFooter from "../entry-parts/ListItemFooter";
 
 const BlogListItem = ({ entry }) => {
-  const srcImg = require("../../../img/test.jpg");
-  const imgAlt = "This is just a test image.";
+  const srcImg = require(`../../../img/entry-img/${entry.image}`);
   return (
     <Fragment>
       <ListItemHead series={entry.series.series} icon="fas fa-pencil-alt" />
-      <ListItemImg src={srcImg} alt={imgAlt} />
+      <ListItemImg src={srcImg} alt={entry.imageAlt} />
       <ListItemDetails
         date={entry.dateAdded}
         title={entry.title}

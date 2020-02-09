@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ListItemDetails = ({ date, title, description }) => {
   const jsDate = new Date(date);
   const displayDate = `${jsDate.getMonth() +
-    1}/${jsDate.getDate()}/${jsDate.getFullYear() + 50}`;
+    1}/${jsDate.getDate()}/${jsDate.getFullYear()}`;
   return (
     <Fragment>
       <p className="entry-list-item_date">{displayDate}</p>
