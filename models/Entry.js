@@ -51,6 +51,9 @@ const EntrySchema = new mongoose.Schema(
     },
     // blog only
     blog: {
+      type: [String]
+    },
+    author: {
       type: String
     }
   },
