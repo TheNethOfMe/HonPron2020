@@ -1,15 +1,8 @@
 import React, { useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import AuthContext from "../../context/auth/authContext";
-
-const Navbar = () => {
-  const authContext = useContext(AuthContext);
-  const { isAuthenticated, username, getUser, logoutUser } = authContext;
-  useEffect(() => {
-    getUser();
-    // eslint-disable-next-line
-  }, [isAuthenticated]);
+const Navbar = ({ user, handleLogout }) => {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
@@ -21,15 +14,15 @@ const Navbar = () => {
         <div className="navbar_right">
           <ul>
             <li>
-              {isAuthenticated ? (
-                <Link to="/">[{username}]</Link>
+              {!!user ? (
+                <Link to="/dashboard">[{user.name}]</Link>
               ) : (
                 <Link to="/login">Login</Link>
               )}
             </li>
             <li>
-              {isAuthenticated ? (
-                <a href="@" onClick={logoutUser}>
+              {!!user ? (
+                <a href="#" onClick={handleLogout}>
                   Logout
                 </a>
               ) : (
@@ -41,6 +34,11 @@ const Navbar = () => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  user: PropTypes.object,
+  handleLogout: PropTypes.func.isRequired
 };
 
 export default Navbar;

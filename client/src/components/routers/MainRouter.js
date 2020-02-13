@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import MenuComponent from "../routers/MenuComponent";
+import PrivateComponent from "../routers/PrivateComponent";
+import AdminComponent from "../routers/AdminComponent";
 
 import Login from "../auth/Login";
 
@@ -20,6 +22,10 @@ import CurrentSnesList from "../pages/CurrentSnesList";
 import GameListState from "../../context/gamelist/gamelistState";
 
 import Contact from "../pages/Contact";
+
+import Dashboard from "../private/Dashboard";
+
+import AdminTest from "../private/adminOnly/AdminTest";
 
 const MainRouter = () => {
   return (
@@ -69,6 +75,18 @@ const MainRouter = () => {
         />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/login" component={Login} />
+        <PrivateComponent
+          exact
+          path="/dashboard"
+          component={Dashboard}
+          context={Fragment}
+        />
+        <AdminComponent
+          exact
+          path="/admin"
+          component={AdminTest}
+          context={Fragment}
+        />
       </Switch>
     </div>
   );
