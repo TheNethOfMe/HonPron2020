@@ -1,24 +1,25 @@
-import { LOGIN, GET_USER, LOGOUT } from "../types";
+import { LOGOUT, AUTH_LOADING, SET_USER } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
-    case LOGIN:
+    case AUTH_LOADING:
       return {
         ...state,
-        token: action.payload.token,
-        isAuthenticated: true
+        loading: action.payload
       };
-    case GET_USER:
+    case SET_USER:
       return {
         ...state,
         isAuthenticated: true,
-        username: action.payload
+        user: action.payload,
+        loading: false
       };
     case LOGOUT:
       return {
         ...state,
         isAuthenticated: false,
-        username: ""
+        user: null,
+        loading: false
       };
     default:
       return {

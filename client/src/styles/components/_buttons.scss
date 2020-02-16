@@ -22,3 +22,9 @@ input[type="reset"],
     transform: scale(0.99);
   }
 }
+
+.nav-btn {
+  background-color: transparent;
+  color: $snes-lite;
+  padding: 0;
+}

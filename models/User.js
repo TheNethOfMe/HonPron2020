@@ -73,9 +73,11 @@ UserSchema.pre("save", async function(next) {
 
 // Sign JWT and return
 UserSchema.methods.getSignedJwtToken = function() {
+  let dataResponse = { id: this._id, name: this.name };
+  if (this.status === "admin") dataResponse.status = "admin";
   return jwt.sign(
     // TODO: perhaps other user props as well?
-    { id: this._id },
+    dataResponse,
     process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRE }
   );

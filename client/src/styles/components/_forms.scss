@@ -12,7 +12,7 @@
     text-align: center;
   }
   h3 {
-    color: $snes-lite;
+    color: $snes-blue;
     font-size: 1.3em;
     padding: 8px;
     text-align: center;
@@ -55,4 +55,16 @@
   @include btn-color($snes-purple, $snes-blue, $snes-lite, $background-color);
   margin: 1em auto;
   width: 80%;
+}
+
+.hp-input_checkbox-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 8px;
+}
+
+.hp-input_checkbox-group {
+  color: $accent-color;
+  margin: 8px;
 }

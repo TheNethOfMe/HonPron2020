@@ -37,5 +37,3 @@ const SingleSeries = ({ match }) => {
 };
 
 export default SingleSeries;
-/*
- */

@@ -66,9 +66,10 @@ exports.logout = asyncHandler(async (req, res, next) => {
 // @access  Private
 exports.getMe = asyncHandler(async (req, res, next) => {
   const user = {
-    name: req.user.name,
-    email: req.user.email
+    id: req.user._id,
+    name: req.user.name
   };
+  if (req.user.status === "admin") user.status = "admin";
   res.status(200).json({ success: true, data: user });
 });
 

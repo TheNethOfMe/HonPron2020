@@ -1,19 +1,39 @@
 import React, { useReducer } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
-import { LOGIN, GET_USER, LOGOUT } from "../types";
+import { LOGOUT, AUTH_LOADING, SET_USER } from "../types";
 
 const AuthState = props => {
   const initialState = {
-    username: "",
+    loading: true,
+    user: null,
     isAuthenticated: false
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+  // Set Loading
+  const setLoading = isLoading => {
+    dispatch({
+      type: AUTH_LOADING,
+      payload: isLoading
+    });
+  };
+
+  // Set User
+  const setUser = user => {
+    dispatch({
+      type: SET_USER,
+      payload: user
+    });
+  };
+
   // Login User
   const loginUser = async (email, password) => {
+    setLoading(true);
     const config = {
       headers: { "Content-Type": "application/json" }
     };
@@ -23,10 +43,8 @@ const AuthState = props => {
         { email, password },
         config
       );
-      dispatch({
-        type: LOGIN,
-        payload: res.data
-      });
+      Cookies.set("hpAuth", res.data.token, { expires: 2, path: "/" });
+      setUser(jwtDecode(res.data.token));
     } catch (err) {
       console.log(err);
     }
@@ -34,12 +52,10 @@ const AuthState = props => {
 
   // Get User
   const getUser = async () => {
+    setLoading(true);
     try {
       const res = await axios.get("/api/v1/auth/me");
-      dispatch({
-        type: GET_USER,
-        payload: res.data.data.name
-      });
+      setUser(res.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -47,11 +63,12 @@ const AuthState = props => {
 
   // Logout User
   const logoutUser = async () => {
+    setLoading(true);
     try {
-      const res = await axios.get("/api/v1/auth/logout", {
+      await axios.get("/api/v1/auth/logout", {
         withCredentials: true
       });
-      console.log(res);
+      Cookies.remove("hpAuth", { path: "/" });
       dispatch({
         type: LOGOUT
       });
@@ -63,8 +80,10 @@ const AuthState = props => {
   return (
     <AuthContext.Provider
       value={{
-        username: state.username,
+        loading: state.loading,
+        user: state.user,
         isAuthenticated: state.isAuthenticated,
+        setLoading,
         loginUser,
         getUser,
         logoutUser
