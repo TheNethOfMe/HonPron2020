@@ -1,0 +1,32 @@
+.dashboard {
+  background: $card-color;
+  text-align: center;
+  h2 {
+    color: $snes-blue;
+    font-family: $main-font;
+    font-size: 2em;
+    padding: 16px;
+  }
+  h3 {
+    color: $accent-color;
+    font-family: $main-font;
+    font-size: 1.3em;
+    padding: 8px;
+  }
+}
+
+.dashboard_btn {
+  background-color: $hp-green;
+  border-radius: 5px;
+  display: block;
+  font-family: $main-font;
+  font-size: 1.2em;
+  margin: 8px auto;
+  padding: 8px;
+  transition: 30ms;
+  width: 75%;
+  &:hover {
+    background-color: $hp-red;
+    color: $snes-lite;
+  }
+}

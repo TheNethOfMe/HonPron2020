@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -22,9 +22,9 @@ const Navbar = ({ user, handleLogout }) => {
             </li>
             <li>
               {!!user ? (
-                <a href="#" onClick={handleLogout}>
+                <button className="nav-btn" onClick={handleLogout}>
                   Logout
-                </a>
+                </button>
               ) : (
                 <Link to="/">Register</Link>
               )}

@@ -25,7 +25,7 @@ import Contact from "../pages/Contact";
 
 import Dashboard from "../private/Dashboard";
 
-import AdminTest from "../private/adminOnly/AdminTest";
+import CreateSeries from "../private/adminOnly/CreateSeries";
 
 const MainRouter = () => {
   return (
@@ -83,9 +83,9 @@ const MainRouter = () => {
         />
         <AdminComponent
           exact
-          path="/admin"
-          component={AdminTest}
-          context={Fragment}
+          path="/create-series"
+          component={CreateSeries}
+          context={SeriesState}
         />
       </Switch>
     </div>

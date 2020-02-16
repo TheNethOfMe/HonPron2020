@@ -15,6 +15,7 @@ exports.getSeries = asyncHandler(async (req, res, next) => {
 // @access  Private/Admin
 exports.createSeries = asyncHandler(async (req, res, next) => {
   let seriesData = req.body;
+  let fileData = req.files;
   if (req.files && req.files.file) {
     seriesData = uploadImg(
       req.files.file,

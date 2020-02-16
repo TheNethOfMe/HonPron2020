@@ -3,7 +3,7 @@ import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import SeriesContext from "./seriesContext";
 import seriesReducer from "./seriesReducer";
-import { GET_ONE_SERIES, GET_ALL_SERIES } from "../types";
+import { GET_ONE_SERIES, GET_ALL_SERIES, CREATE_SERIES } from "../types";
 
 const SeriesState = props => {
   const initialState = {
@@ -51,6 +51,22 @@ const SeriesState = props => {
     }
   };
 
+  const createSeries = async newSeries => {
+    let formData = new FormData();
+    formData.append("seriesName", newSeries.seriesName);
+    formData.append("seriesType", newSeries.seriesType);
+    formData.append("seriesDesc", newSeries.seriesDesc);
+    formData.append("imageAlt", newSeries.imageAlt);
+    formData.append("file", newSeries.image);
+    try {
+      axios.post("/api/v1/series", formData, {
+        headers: { "Context-Type": "multipart/form-data" }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <SeriesContext.Provider
       value={{
@@ -60,7 +76,8 @@ const SeriesState = props => {
         seriesEntries: state.seriesEntries,
         entriesPage: state.entriesPage,
         getAllSeries,
-        getOneSeries
+        getOneSeries,
+        createSeries
       }}
     >
       {props.children}
