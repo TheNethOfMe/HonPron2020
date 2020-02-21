@@ -16,6 +16,10 @@ const Dashboard = () => {
             Create Series
           </Link>
           <Link className="dashboard_btn">Manage Series</Link>
+          <Link to="/create-entry" className="dashboard_btn">
+            Create Entry
+          </Link>
+          <Link className="dashboard_btn">Manage Entries</Link>
         </Fragment>
       ) : (
         <Fragment>User Area</Fragment>

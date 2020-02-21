@@ -34,6 +34,7 @@ const SeriesState = props => {
     }
   };
 
+  // Get One Series
   const getOneSeries = async (slug, params) => {
     let endpoint = `/api/v1/series/${slug}`;
     if (Object.keys(params).length) {
@@ -51,6 +52,7 @@ const SeriesState = props => {
     }
   };
 
+  // Create a seires
   const createSeries = async newSeries => {
     let formData = new FormData();
     formData.append("seriesName", newSeries.seriesName);
