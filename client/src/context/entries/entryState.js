@@ -45,6 +45,34 @@ const EntryState = props => {
     }
   };
 
+  // Create Series
+  const createEntry = async newEntry => {
+    let formData = new FormData();
+    formData.append("title", newEntry.title);
+    formData.append("entryType", newEntry.entryType);
+    formData.append("description", newEntry.description);
+    formData.append("games", newEntry.games);
+    formData.append("series", newEntry.series);
+    formData.append("imageAlt", newEntry.imageAlt);
+    formData.append("file", newEntry.image);
+    // podcast or video
+    if (newEntry.urlId) formData.append("urlId", newEntry.urlId);
+    if (newEntry.duration) formData.append("duration", newEntry.duration);
+    // SNEScapades
+    if (newEntry.episode) formData.append("episode", newEntry.episode);
+    if (newEntry.gameList) formData.append("gameList", newEntry.gameList);
+    // blog
+    if (newEntry.blog) formData.append("blog", newEntry.blog);
+    if (newEntry.author) formData.append("author", newEntry.author);
+    try {
+      axios.post("/api/v1/entries", formData, {
+        headers: { "Context-Type": "multipart/form-data" }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <EntryContext.Provider
       value={{
@@ -52,7 +80,8 @@ const EntryState = props => {
         single: state.single,
         pagination: state.pagination,
         getEntries,
-        getOneEntry
+        getOneEntry,
+        createEntry
       }}
     >
       {props.children}

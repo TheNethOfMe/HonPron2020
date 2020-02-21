@@ -26,6 +26,7 @@ import Contact from "../pages/Contact";
 import Dashboard from "../private/Dashboard";
 
 import CreateSeries from "../private/adminOnly/CreateSeries";
+import CreateEntry from "../private/adminOnly/CreateEntry";
 
 const MainRouter = () => {
   return (
@@ -86,6 +87,12 @@ const MainRouter = () => {
           path="/create-series"
           component={CreateSeries}
           context={SeriesState}
+        />
+        <AdminComponent
+          exact
+          path="/create-entry"
+          component={CreateEntry}
+          context={EntryState}
         />
       </Switch>
     </div>

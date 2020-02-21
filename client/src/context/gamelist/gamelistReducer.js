@@ -1,4 +1,4 @@
-import { GET_CURRENT_LIST } from "../types";
+import { GET_CURRENT_LIST, GET_ALL_LISTS } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ export default (state, action) => {
       return {
         ...state,
         gamelist: action.payload
+      };
+    case GET_ALL_LISTS:
+      return {
+        ...state,
+        allLists: action.payload
       };
     default:
       return {
