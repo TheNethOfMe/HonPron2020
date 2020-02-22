@@ -5,13 +5,16 @@ const {
   createEntry,
   getEntry,
   updateEntry,
-  deleteEntry
+  deleteEntry,
+  getEntryForEdit
 } = require("../controllers/entries");
 
 const { advancedEntries } = require("../middleware/advancedQuery");
 const { protect, adminOnly } = require("../middleware/auth");
 
 const commentRouter = require("./comments");
+
+router.use("/forEdit/:id", getEntryForEdit);
 router.use("/:entryId/comment", commentRouter);
 
 router

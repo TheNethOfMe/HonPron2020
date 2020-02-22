@@ -3,7 +3,7 @@ import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import SeriesContext from "./seriesContext";
 import seriesReducer from "./seriesReducer";
-import { GET_ONE_SERIES, GET_ALL_SERIES, CREATE_SERIES } from "../types";
+import { GET_ONE_SERIES, GET_ALL_SERIES, DELETE_SERIES } from "../types";
 
 const SeriesState = props => {
   const initialState = {
@@ -52,7 +52,7 @@ const SeriesState = props => {
     }
   };
 
-  // Create a seires
+  // Create a series
   const createSeries = async newSeries => {
     let formData = new FormData();
     formData.append("seriesName", newSeries.seriesName);
@@ -69,6 +69,47 @@ const SeriesState = props => {
     }
   };
 
+  // Get Series for Update
+  const getSeriesForUpdate = async id => {
+    try {
+      const res = await axios.get(`/api/v1/series/${id}/noentry`);
+      dispatch({
+        type: GET_ONE_SERIES,
+        payload: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Update Entry
+  const updateSeries = async seriesData => {
+    let formData = new FormData();
+    for (const prop in seriesData) {
+      formData.append(prop, seriesData[prop]);
+    }
+    try {
+      axios.put(`/api/v1/series/${seriesData._id}`, formData, {
+        headers: { "Context-Type": "multipart/form-data" }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Delete a series
+  const deleteSeries = async id => {
+    try {
+      axios.delete(`api/v1/series/${id}`);
+      dispatch({
+        type: DELETE_SERIES,
+        payload: id
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <SeriesContext.Provider
       value={{
@@ -79,7 +120,10 @@ const SeriesState = props => {
         entriesPage: state.entriesPage,
         getAllSeries,
         getOneSeries,
-        createSeries
+        createSeries,
+        getSeriesForUpdate,
+        updateSeries,
+        deleteSeries
       }}
     >
       {props.children}

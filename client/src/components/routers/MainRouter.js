@@ -27,6 +27,8 @@ import Dashboard from "../private/Dashboard";
 
 import CreateSeries from "../private/adminOnly/CreateSeries";
 import CreateEntry from "../private/adminOnly/CreateEntry";
+import ManageEntries from "../private/adminOnly/ManageEntries";
+import ManageSeries from "../private/adminOnly/ManageSeries";
 
 const MainRouter = () => {
   return (
@@ -93,6 +95,30 @@ const MainRouter = () => {
           path="/create-entry"
           component={CreateEntry}
           context={EntryState}
+        />
+        <AdminComponent
+          exact
+          path="/manage-entries"
+          component={ManageEntries}
+          context={EntryState}
+        />
+        <AdminComponent
+          exact
+          path="/edit-entry/:id"
+          component={CreateEntry}
+          context={EntryState}
+        />
+        <AdminComponent
+          exact
+          path="/manage-series"
+          component={ManageSeries}
+          context={SeriesState}
+        />
+        <AdminComponent
+          exact
+          path="/edit-series/:id"
+          component={CreateSeries}
+          context={SeriesState}
         />
       </Switch>
     </div>

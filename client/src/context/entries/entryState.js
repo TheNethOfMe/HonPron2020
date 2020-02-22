@@ -3,7 +3,7 @@ import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import EntryContext from "./entryContext";
 import entryReducer from "./entryReducer";
-import { GET_ENTRIES, GET_SINGLE_ENTRY } from "../types";
+import { GET_ENTRIES, GET_SINGLE_ENTRY, DELETE_ENTRY } from "../types";
 
 const EntryState = props => {
   const initialState = {
@@ -73,6 +73,47 @@ const EntryState = props => {
     }
   };
 
+  // Get Entry for Update
+  const getEntryForUpdate = async id => {
+    try {
+      const res = await axios.get(`/api/v1/entries/forEdit/${id}`);
+      dispatch({
+        type: GET_SINGLE_ENTRY,
+        payload: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Update Entry
+  const updateEntry = async entryData => {
+    let formData = new FormData();
+    for (const prop in entryData) {
+      formData.append(prop, entryData[prop]);
+    }
+    try {
+      axios.put(`/api/v1/entries/${entryData._id}`, formData, {
+        headers: { "Context-Type": "multipart/form-data" }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Delete Entry
+  const deleteEntry = async id => {
+    try {
+      axios.delete(`api/v1/entries/${id}`);
+      dispatch({
+        type: DELETE_ENTRY,
+        payload: id
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <EntryContext.Provider
       value={{
@@ -81,7 +122,10 @@ const EntryState = props => {
         pagination: state.pagination,
         getEntries,
         getOneEntry,
-        createEntry
+        createEntry,
+        getEntryForUpdate,
+        updateEntry,
+        deleteEntry
       }}
     >
       {props.children}
