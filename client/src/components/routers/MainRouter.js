@@ -19,6 +19,8 @@ import SingleSeries from "../pages/SingleSeries";
 import SeriesState from "../../context/series/seriesState";
 
 import CurrentSnesList from "../pages/CurrentSnesList";
+import ManageLists from "../private/adminOnly/ManageLists";
+import UpdateList from "../private/adminOnly/UpdateList";
 import GameListState from "../../context/gamelist/gamelistState";
 
 import Contact from "../pages/Contact";
@@ -119,6 +121,18 @@ const MainRouter = () => {
           path="/edit-series/:id"
           component={CreateSeries}
           context={SeriesState}
+        />
+        <AdminComponent
+          exact
+          path="/manage-lists"
+          component={ManageLists}
+          context={GameListState}
+        />
+        <AdminComponent
+          exact
+          path="/edit-list/:id"
+          component={UpdateList}
+          context={GameListState}
         />
       </Switch>
     </div>

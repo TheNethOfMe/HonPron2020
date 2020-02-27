@@ -146,6 +146,7 @@ const CreateEntry = ({ match }) => {
             label="Games Featured"
             onChange={onChange}
             info="Separate games with comma and space (ie. Game One, Game Two)"
+            rows={40}
           />
           {(entryType === "video" || entryType === "podcast") && (
             <Fragment>

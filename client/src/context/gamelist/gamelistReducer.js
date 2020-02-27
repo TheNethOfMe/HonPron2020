@@ -1,4 +1,8 @@
-import { GET_CURRENT_LIST, GET_ALL_LISTS } from "../types";
+import {
+  GET_CURRENT_LIST,
+  GET_ALL_LISTS,
+  GET_UNFORMATTED_LIST
+} from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -11,6 +15,11 @@ export default (state, action) => {
       return {
         ...state,
         allLists: action.payload
+      };
+    case GET_UNFORMATTED_LIST:
+      return {
+        ...state,
+        unformatted: action.payload
       };
     default:
       return {

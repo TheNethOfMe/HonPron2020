@@ -16,3 +16,4 @@ export const GET_FAQS = "GET_FAQS";
 
 export const GET_CURRENT_LIST = "GET_CURRENT_LIST";
 export const GET_ALL_LISTS = "GET_ALL_LISTS";
+export const GET_UNFORMATTED_LIST = "GET_UNFORMATTED_LIST";
