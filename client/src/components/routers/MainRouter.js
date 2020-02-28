@@ -81,7 +81,12 @@ const MainRouter = () => {
           component={About}
           context={FaqState}
         />
-        <Route exact path="/contact" component={Contact} />
+        <MenuComponent
+          exact
+          path="/contact"
+          component={Contact}
+          context={TicketState}
+        />
         <Route exact path="/login" component={Login} />
         <PrivateComponent
           exact

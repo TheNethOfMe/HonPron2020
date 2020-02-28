@@ -45,6 +45,15 @@ const TicketState = props => {
     }
   };
 
+  // create ticket
+  const createTicket = async ticketData => {
+    try {
+      await axios.post("/api/v1/tickets", ticketData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // update one ticket
   const updateOneTicket = async (id, updateFields) => {
     try {
@@ -75,6 +84,7 @@ const TicketState = props => {
         singleTicket: state.singleTicket,
         getAllTickets,
         getOneTicket,
+        createTicket,
         updateOneTicket,
         deleteTicket
       }}
