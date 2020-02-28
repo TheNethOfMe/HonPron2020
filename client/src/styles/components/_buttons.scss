@@ -2,14 +2,14 @@ button,
 input[type="submit"],
 input[type="reset"],
 .hp-btn {
-  display: block;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+  display: block;
   padding: 1em 2em;
   text-decoration: none;
   font-family: inherit;
   font-size: 1em;
-  cursor: pointer;
   text-align: center;
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
@@ -27,4 +27,14 @@ input[type="reset"],
   background-color: transparent;
   color: $snes-lite;
   padding: 0;
+}
+
+.newlist-btn {
+  background-color: $hp-green;
+  transition: 0.5s;
+  width: 100%;
+  &:focus,
+  &:hover {
+    background-color: $snes-lite;
+  }
 }

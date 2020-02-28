@@ -12,14 +12,15 @@ const Dashboard = () => {
       {user.status && user.status === "admin" ? (
         <Fragment>
           <h3>Series/Entry Management</h3>
-          <Link to="/create-series" className="dashboard_btn">
-            Create Series
+          <Link to="/manage-series" className="dashboard_btn">
+            Manage Series
           </Link>
-          <Link className="dashboard_btn">Manage Series</Link>
-          <Link to="/create-entry" className="dashboard_btn">
-            Create Entry
+          <Link to="/manage-entries" className="dashboard_btn">
+            Manage Entries
           </Link>
-          <Link className="dashboard_btn">Manage Entries</Link>
+          <Link to="/manage-lists" className="dashboard_btn">
+            Manage Game Lists
+          </Link>
         </Fragment>
       ) : (
         <Fragment>User Area</Fragment>

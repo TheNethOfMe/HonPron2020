@@ -19,6 +19,8 @@ import SingleSeries from "../pages/SingleSeries";
 import SeriesState from "../../context/series/seriesState";
 
 import CurrentSnesList from "../pages/CurrentSnesList";
+import ManageLists from "../private/adminOnly/ManageLists";
+import UpdateList from "../private/adminOnly/UpdateList";
 import GameListState from "../../context/gamelist/gamelistState";
 
 import Contact from "../pages/Contact";
@@ -27,6 +29,8 @@ import Dashboard from "../private/Dashboard";
 
 import CreateSeries from "../private/adminOnly/CreateSeries";
 import CreateEntry from "../private/adminOnly/CreateEntry";
+import ManageEntries from "../private/adminOnly/ManageEntries";
+import ManageSeries from "../private/adminOnly/ManageSeries";
 
 const MainRouter = () => {
   return (
@@ -93,6 +97,42 @@ const MainRouter = () => {
           path="/create-entry"
           component={CreateEntry}
           context={EntryState}
+        />
+        <AdminComponent
+          exact
+          path="/manage-entries"
+          component={ManageEntries}
+          context={EntryState}
+        />
+        <AdminComponent
+          exact
+          path="/edit-entry/:id"
+          component={CreateEntry}
+          context={EntryState}
+        />
+        <AdminComponent
+          exact
+          path="/manage-series"
+          component={ManageSeries}
+          context={SeriesState}
+        />
+        <AdminComponent
+          exact
+          path="/edit-series/:id"
+          component={CreateSeries}
+          context={SeriesState}
+        />
+        <AdminComponent
+          exact
+          path="/manage-lists"
+          component={ManageLists}
+          context={GameListState}
+        />
+        <AdminComponent
+          exact
+          path="/edit-list/:id"
+          component={UpdateList}
+          context={GameListState}
         />
       </Switch>
     </div>

@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import SeriesContext from "../../../context/series/seriesContext";
 import TextEntry from "../../form-parts/TextEntry";
@@ -6,10 +7,16 @@ import SelectType from "../../form-parts/SelectType";
 import TextArea from "../../form-parts/TextArea";
 import FileUpload from "../../form-parts/FileUpload";
 
-const CreateSeries = () => {
+const CreateSeries = ({ match }) => {
+  let history = useHistory();
   const seriesContext = useContext(SeriesContext);
-  const { createSeries } = seriesContext;
-  const [newSeries, setField] = useState({
+  const {
+    createSeries,
+    getSeriesForUpdate,
+    singleSeries,
+    updateSeries
+  } = seriesContext;
+  const [seriesData, setField] = useState({
     seriesName: "",
     seriesType: "",
     seriesDesc: "",
@@ -17,19 +24,42 @@ const CreateSeries = () => {
     imageAlt: ""
   });
 
-  const { seriesName, seriesType, seriesDesc, image, imageAlt } = newSeries;
+  useEffect(() => {
+    if (match.params.id) {
+      getSeriesForUpdate(match.params.id);
+    }
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    if (match.params.id && !!singleSeries.seriesName) {
+      let fillData = { ...singleSeries };
+      delete fillData.slug;
+      delete fillData.__v;
+      delete fillData.id;
+      setField({ ...seriesData, ...fillData });
+    }
+    // eslint-disable-next-line
+  }, [singleSeries]);
+
+  const { seriesName, seriesType, seriesDesc, imageAlt } = seriesData;
 
   const uploadFile = e => {
-    setField({ ...newSeries, image: e.target.files[0] });
+    setField({ ...seriesData, image: e.target.files[0] });
   };
 
   const onChange = e => {
-    setField({ ...newSeries, [e.target.name]: e.target.value });
+    setField({ ...seriesData, [e.target.name]: e.target.value });
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    createSeries(newSeries);
+    if (match.params.id) {
+      updateSeries(seriesData);
+    } else {
+      createSeries(seriesData);
+    }
+    history.push("/manage-series");
   };
 
   return (
@@ -67,7 +97,7 @@ const CreateSeries = () => {
             label="Image Alt Text"
             onChange={onChange}
           />
-          <input className="hp-form_btn" type="submit" value="Create" />
+          <input className="hp-form_btn" type="submit" value="Submit" />
         </form>
       </div>
     </div>

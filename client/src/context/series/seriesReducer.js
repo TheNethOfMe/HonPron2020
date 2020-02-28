@@ -1,4 +1,4 @@
-import { GET_ONE_SERIES, GET_ALL_SERIES } from "../types";
+import { GET_ONE_SERIES, GET_ALL_SERIES, DELETE_SERIES } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -14,6 +14,13 @@ export default (state, action) => {
         singleSeries: action.payload.data,
         seriesEntries: action.payload.data.entries,
         entriesPage: action.payload.pagination
+      };
+    case DELETE_SERIES:
+      return {
+        ...state,
+        allSeries: state.allSeries.filter(
+          series => series._id !== action.payload
+        )
       };
     default:
       return {

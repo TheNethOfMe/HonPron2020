@@ -1,4 +1,4 @@
-import { GET_ENTRIES, GET_SINGLE_ENTRY } from "../types";
+import { GET_ENTRIES, GET_SINGLE_ENTRY, DELETE_ENTRY } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,6 +12,11 @@ export default (state, action) => {
       return {
         ...state,
         single: action.payload.data
+      };
+    case DELETE_ENTRY:
+      return {
+        ...state,
+        entries: state.entries.filter(entry => entry._id !== action.payload)
       };
     default:
       return {

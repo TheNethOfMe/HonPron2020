@@ -14,7 +14,7 @@ const GameListDropdown = ({ type, label, name, value, onChange }) => {
       <label className="hp-input_label" htmlFor={name}>
         {label}
       </label>
-      <select name={name} id={name} defaultValue={value} onChange={onChange}>
+      <select name={name} id={name} value={value} onChange={onChange}>
         <option value="">Select A Series</option>
         {allSeries.map(series => {
           return (

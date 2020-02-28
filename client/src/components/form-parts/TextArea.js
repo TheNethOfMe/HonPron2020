@@ -1,6 +1,14 @@
 import React from "react";
 
-const TextArea = ({ name, placeholder, value, label, info, onChange }) => {
+const TextArea = ({
+  name,
+  placeholder,
+  value,
+  label,
+  info,
+  onChange,
+  rows = 10
+}) => {
   return (
     <div className="hp-input">
       <label className="hp-input_label" htmlFor={name}>
@@ -8,6 +16,7 @@ const TextArea = ({ name, placeholder, value, label, info, onChange }) => {
       </label>
       <textarea
         className="hp-input_field"
+        rows={rows}
         placeholder={placeholder}
         name={name}
         value={value}

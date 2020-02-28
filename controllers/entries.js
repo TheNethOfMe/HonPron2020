@@ -69,6 +69,7 @@ exports.getEntry = asyncHandler(async (req, res, next) => {
       entry.episode
     );
     result.formattedList = formattedList;
+    result.gameListId = entry.gameList._id;
   }
   if (entry.comments) {
     delete result.comments;
@@ -89,7 +90,12 @@ exports.getEntry = asyncHandler(async (req, res, next) => {
 // @route   PUT /api/v1/entries/:id
 // @access  Private/Admin
 exports.updateEntry = asyncHandler(async (req, res, next) => {
-  const entry = await Entry.findByIdAndUpdate(req.params.id, req.body, {
+  let entryData = req.body;
+  entryData.games = entryData.games.split(", ");
+  if (req.files && req.files.file) {
+    entryData = uploadImg(req.files.file, entryData, "entry-img", "title");
+  }
+  const entry = await Entry.findByIdAndUpdate(req.params.id, entryData, {
     new: true,
     runValidators: true
   });
@@ -113,4 +119,22 @@ exports.deleteEntry = asyncHandler(async (req, res, next) => {
   }
   entry.remove();
   res.status(200).json({ success: true, data: {} });
+});
+
+// @desc    Get one Entry without extra data for editing purposes
+// @route   GET /api/v1/entries/forEdit/:id
+// @access  Private/Admin
+exports.getEntryForEdit = asyncHandler(async (req, res, next) => {
+  let entry = await Entry.findById(req.params.id).populate([
+    {
+      path: "series",
+      select: "seriesName"
+    }
+  ]);
+  if (!entry) {
+    return next(
+      new ErrorResponse(`Entry not found with id of ${req.params.id}`, 404)
+    );
+  }
+  res.status(200).json({ success: true, data: entry });
 });

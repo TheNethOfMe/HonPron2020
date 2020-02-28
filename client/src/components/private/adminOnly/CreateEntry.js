@@ -1,4 +1,5 @@
-import React, { useContext, useState, Fragment } from "react";
+import React, { useContext, useState, useEffect, Fragment } from "react";
+import { useHistory } from "react-router-dom";
 
 // Context
 import EntryContext from "../../../context/entries/entryContext";
@@ -12,11 +13,12 @@ import FileUpload from "../../form-parts/FileUpload";
 import SeriesListDropdown from "../../form-parts/SeriesListDropdown";
 import GameListDropdown from "../../form-parts/GameListDropdown";
 
-const CreateEntry = () => {
+const CreateEntry = ({ match }) => {
+  let history = useHistory();
   const entryContext = useContext(EntryContext);
-  const { createEntry } = entryContext;
+  const { createEntry, getEntryForUpdate, single, updateEntry } = entryContext;
   const [selectedSeries, setSeries] = useState("");
-  const [newEntry, setField] = useState({
+  const [entryData, setField] = useState({
     title: "",
     entryType: "podcast",
     description: "",
@@ -32,13 +34,33 @@ const CreateEntry = () => {
     author: ""
   });
 
+  useEffect(() => {
+    if (match.params.id) {
+      getEntryForUpdate(match.params.id);
+    }
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    if (match.params.id && !!single.title) {
+      setSeries(single.series.seriesName);
+      let fillData = { ...single };
+      delete fillData.slug;
+      delete fillData.__v;
+      delete fillData.id;
+      fillData.games = fillData.games.join(", ");
+      fillData.series = fillData.series._id;
+      setField({ ...fillData });
+    }
+    // eslint-disable-next-line
+  }, [single]);
+
   const {
     title,
     entryType,
     description,
     games,
     series,
-    image,
     imageAlt,
     urlId,
     duration,
@@ -46,10 +68,10 @@ const CreateEntry = () => {
     gameList,
     blog,
     author
-  } = newEntry;
+  } = entryData;
 
   const uploadFile = e => {
-    setField({ ...newEntry, image: e.target.files[0] });
+    setField({ ...entryData, image: e.target.files[0] });
   };
 
   const onChange = e => {
@@ -60,12 +82,17 @@ const CreateEntry = () => {
         ].text
       );
     }
-    setField({ ...newEntry, [e.target.name]: e.target.value });
+    setField({ ...entryData, [e.target.name]: e.target.value });
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    createEntry(newEntry);
+    if (match.params.id) {
+      updateEntry(entryData);
+    } else {
+      createEntry(entryData);
+    }
+    history.push("/manage-entries");
   };
 
   return (
@@ -119,6 +146,7 @@ const CreateEntry = () => {
             label="Games Featured"
             onChange={onChange}
             info="Separate games with comma and space (ie. Game One, Game Two)"
+            rows={40}
           />
           {(entryType === "video" || entryType === "podcast") && (
             <Fragment>
@@ -175,7 +203,7 @@ const CreateEntry = () => {
               </GameListState>
             </Fragment>
           )}
-          <input className="hp-form_btn" type="submit" value="Create" />
+          <input className="hp-form_btn" type="submit" value="Submit" />
         </form>
       </div>
     </div>

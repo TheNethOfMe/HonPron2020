@@ -1,0 +1,56 @@
+.admin-manage {
+  h2 {
+    color: $accent-color;
+    font-family: $accent-text;
+    font-size: 1.5em;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.admin-manage_card {
+  @extend %card-stock;
+  h3 {
+    font-family: $main-font;
+    font-size: 1.3em;
+    padding: 4px;
+    text-align: center;
+  }
+}
+
+.admin-manage_card-podcast {
+  color: $hp-green;
+}
+
+.admin-manage_card-video {
+  color: $hp-red;
+}
+
+.admin-manage_card-blog {
+  color: $hp-blue;
+}
+
+.admin-manage_btn-dash {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.admin-manage_update-btn {
+  background: $snes-purple;
+  color: black;
+  font-family: $accent-text;
+  margin: 8px;
+  &:hover {
+    background: $hp-blue;
+  }
+}
+
+.admin-manage_delete-btn {
+  background: $snes-blue;
+  font-family: $accent-text;
+  margin: 8px;
+  &:hover {
+    background: $hp-red;
+  }
+}
