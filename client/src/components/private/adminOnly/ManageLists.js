@@ -20,7 +20,7 @@ const ManageLists = () => {
       {allLists.map(list => (
         <ManageResourceCard
           key={list._id}
-          title={list.title}
+          title={`${list.title}${list.current ? " *" : ""}`}
           type="podcast"
           linkTo={`/edit-list/${list._id}`}
         />

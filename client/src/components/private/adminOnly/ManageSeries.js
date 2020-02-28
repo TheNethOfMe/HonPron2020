@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import SeriesContext from "../../../context/series/seriesContext";
 import ManageResourceCard from "./ManageResourceCard";
@@ -18,7 +19,10 @@ const ManageSeries = () => {
   };
   return (
     <div className="admin-manage">
-      <h2>Manage Entries</h2>
+      <h2>Manage Series</h2>
+      <Link to="/create-series" className="dashboard_btn">
+        Create Series
+      </Link>
       {allSeries.map(series => (
         <ManageResourceCard
           key={series._id}

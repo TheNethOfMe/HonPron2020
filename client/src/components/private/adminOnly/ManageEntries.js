@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import EntryContext from "../../../context/entries/entryContext";
 import ManageResourceCard from "./ManageResourceCard";
@@ -23,6 +24,9 @@ const ManageEntries = ({ match }) => {
   return (
     <div className="admin-manage">
       <h2>Manage Entries</h2>
+      <Link to="/create-entry" className="dashboard_btn">
+        Create Entry
+      </Link>
       {entries.map(entry => (
         <ManageResourceCard
           key={entry._id}
