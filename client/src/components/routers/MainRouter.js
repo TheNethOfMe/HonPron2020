@@ -24,6 +24,8 @@ import UpdateList from "../private/adminOnly/UpdateList";
 import GameListState from "../../context/gamelist/gamelistState";
 
 import Contact from "../pages/Contact";
+import ViewComment from "../private/adminOnly/ViewComment";
+import TicketState from "../../context/tickets/ticketState";
 
 import Dashboard from "../private/Dashboard";
 
@@ -31,6 +33,7 @@ import CreateSeries from "../private/adminOnly/CreateSeries";
 import CreateEntry from "../private/adminOnly/CreateEntry";
 import ManageEntries from "../private/adminOnly/ManageEntries";
 import ManageSeries from "../private/adminOnly/ManageSeries";
+import ManageTickets from "../private/adminOnly/ManageTickets";
 
 const MainRouter = () => {
   return (
@@ -133,6 +136,18 @@ const MainRouter = () => {
           path="/edit-list/:id"
           component={UpdateList}
           context={GameListState}
+        />
+        <AdminComponent
+          exact
+          path="/manage-tickets/"
+          component={ManageTickets}
+          context={TicketState}
+        />
+        <AdminComponent
+          exact
+          path="/edit-ticket/:id"
+          component={ViewComment}
+          context={TicketState}
         />
       </Switch>
     </div>

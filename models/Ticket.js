@@ -4,7 +4,7 @@ const colorCoding = require("../utils/colorCoding");
 const TicketSchema = new mongoose.Schema({
   subject: {
     type: String,
-    default: "(No Default)"
+    default: "(No Subject)"
   },
   topic: {
     type: String,

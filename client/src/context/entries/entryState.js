@@ -104,7 +104,7 @@ const EntryState = props => {
   // Delete Entry
   const deleteEntry = async id => {
     try {
-      axios.delete(`api/v1/entries/${id}`);
+      axios.delete(`/api/v1/entries/${id}`);
       dispatch({
         type: DELETE_ENTRY,
         payload: id

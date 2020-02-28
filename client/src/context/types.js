@@ -17,3 +17,8 @@ export const GET_FAQS = "GET_FAQS";
 export const GET_CURRENT_LIST = "GET_CURRENT_LIST";
 export const GET_ALL_LISTS = "GET_ALL_LISTS";
 export const GET_UNFORMATTED_LIST = "GET_UNFORMATTED_LIST";
+
+export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
+export const GET_ONE_TICKET = "GET_ONE_TICKET";
+export const DELETE_TICKET = "DELETE_TICKET";
+// export const START = "START";
