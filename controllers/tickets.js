@@ -22,7 +22,7 @@ exports.createTicket = asyncHandler(async (req, res, next) => {
   res.status(201).json({ success: true, data: ticket });
 });
 
-// @desc    Get one TIcket
+// @desc    Get one Ticket
 // @route   GET /api/v1/tickets/:id
 // @access  Private/Admin
 exports.getSingleTicket = asyncHandler(async (req, res, next) => {

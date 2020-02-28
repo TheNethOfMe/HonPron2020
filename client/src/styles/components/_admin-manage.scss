@@ -54,3 +54,25 @@
     background: $hp-red;
   }
 }
+
+.admin-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4px;
+}
+
+.admin-tab-btn {
+  background: $snes-purple;
+  color: $snes-blue;
+  font-family: $main-font;
+  transition: 0.5s;
+  &.selected {
+    background: $snes-lite;
+    color: black;
+  }
+  &:hover,
+  &:focus {
+    background: $snes-blue;
+    color: $snes-purple;
+  }
+}

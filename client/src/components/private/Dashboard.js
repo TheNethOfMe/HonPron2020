@@ -21,6 +21,9 @@ const Dashboard = () => {
           <Link to="/manage-lists" className="dashboard_btn">
             Manage Game Lists
           </Link>
+          <Link to="/manage-tickets" className="dashboard_btn">
+            Manage User Messages
+          </Link>
         </Fragment>
       ) : (
         <Fragment>User Area</Fragment>
