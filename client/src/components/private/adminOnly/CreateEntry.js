@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
-
+import PropTypes from "prop-types";
 // Context
 import EntryContext from "../../../context/entries/entryContext";
 import SeriesState from "../../../context/series/seriesState";
 import GameListState from "../../../context/gamelist/gamelistState";
 // Form Parts
 import TextEntry from "../../form-parts/TextEntry";
+import NumberEntry from "../../form-parts/NumberEntry";
 import SelectType from "../../form-parts/SelectType";
 import TextArea from "../../form-parts/TextArea";
 import FileUpload from "../../form-parts/FileUpload";
@@ -146,7 +147,7 @@ const CreateEntry = ({ match }) => {
             label="Games Featured"
             onChange={onChange}
             info="Separate games with comma and space (ie. Game One, Game Two)"
-            rows={40}
+            rows={4}
           />
           {(entryType === "video" || entryType === "podcast") && (
             <Fragment>
@@ -181,12 +182,13 @@ const CreateEntry = ({ match }) => {
                 value={blog}
                 label="Compose Blog Entry"
                 onChange={onChange}
+                rows={40}
               />
             </Fragment>
           )}
           {selectedSeries === "SNEScapades" && (
             <Fragment>
-              <TextEntry
+              <NumberEntry
                 name="episode"
                 placeholder="Episode Number"
                 value={episode}
@@ -208,6 +210,10 @@ const CreateEntry = ({ match }) => {
       </div>
     </div>
   );
+};
+
+CreateEntry.propTypes = {
+  match: PropTypes.object
 };
 
 export default CreateEntry;

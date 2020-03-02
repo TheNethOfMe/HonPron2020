@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const FileUpload = ({ name, label, info, accept, onChange }) => {
   return (
@@ -24,6 +25,14 @@ const FileUpload = ({ name, label, info, accept, onChange }) => {
       </div>
     </div>
   );
+};
+
+FileUpload.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  info: PropTypes.string,
+  accept: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default FileUpload;

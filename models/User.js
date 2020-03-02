@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
   // determines if a user is in good standing
   status: {
     type: String,
-    enum: ["user", "blacklisted", "blocked"],
+    enum: ["user", "blacklisted", "blocked", "premium"],
     default: "user"
   },
   password: {

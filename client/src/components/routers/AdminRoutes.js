@@ -10,12 +10,14 @@ import ManageLists from "../private/adminOnly/ManageLists";
 import UpdateList from "../private/adminOnly/UpdateList";
 import ViewComment from "../private/adminOnly/ViewComment";
 import ManageMenu from "../private/adminOnly/ManageMenu";
+import ManageUsers from "../private/adminOnly/ManageUsers";
 // contexts
 import SeriesState from "../../context/series/seriesState";
 import EntryState from "../../context/entries/entryState";
 import GameListState from "../../context/gamelist/gamelistState";
 import TicketState from "../../context/tickets/ticketState";
 import MenuState from "../../context/menu/menuState";
+import UserState from "../../context/users/userState";
 
 const AdminRoutes = () => {
   return (
@@ -85,6 +87,12 @@ const AdminRoutes = () => {
         path="/manage-menu"
         component={ManageMenu}
         context={MenuState}
+      />
+      <AdminComponent
+        exact
+        path="/manage-users"
+        component={ManageUsers}
+        context={UserState}
       />
     </Fragment>
   );

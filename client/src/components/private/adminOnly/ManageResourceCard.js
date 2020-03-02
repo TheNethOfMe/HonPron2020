@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const ManageEntryCard = ({ linkTo, title, type, handleDelete }) => {
+const ManageResourceCard = ({ linkTo, title, type, handleDelete }) => {
   const [isWarned, setWarning] = useState(false);
   return (
     <div className={`admin-manage_card admin-manage_card-${type}`}>
@@ -50,4 +51,11 @@ const ManageEntryCard = ({ linkTo, title, type, handleDelete }) => {
   );
 };
 
-export default ManageEntryCard;
+ManageResourceCard.propTypes = {
+  linkTo: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired
+};
+
+export default ManageResourceCard;

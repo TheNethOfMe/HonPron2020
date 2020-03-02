@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
-
+import PropTypes from "prop-types";
 import SeriesContext from "../../context/series/seriesContext";
 import SeriesListItem from "../entries/list-item/SeriesListItem";
 import EntryList from "../entries/EntryList";
@@ -34,6 +34,10 @@ const SingleSeries = ({ match }) => {
       )}
     </Fragment>
   );
+};
+
+SingleSeries.propTypes = {
+  match: PropTypes.object.isRequired
 };
 
 export default SingleSeries;

@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
 
 // Context
 import TicketContext from "../../context/tickets/ticketContext";

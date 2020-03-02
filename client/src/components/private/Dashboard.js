@@ -27,6 +27,9 @@ const Dashboard = () => {
           <Link to="/manage-menu" className="dashboard_btn">
             Manage Menu
           </Link>
+          <Link to="/manage-users" className="dashboard_btn">
+            Manage Users
+          </Link>
         </Fragment>
       ) : (
         <Fragment>User Area</Fragment>

@@ -4,13 +4,11 @@ const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/asyncHandler");
 const sendEmail = require("../utils/sendEmail");
 const sendTokenResponse = require("../utils/sendTokenResponse");
-const colorCoding = require("../utils/colorCoding");
 
 // @desc    Register User
 // @route   POST /api/v1/auth/register
 // @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
-  // TODO: Impliment whitelist and check to make sure user's email is on it
   const { name, email, password } = req.body;
   const user = await User.create({
     name,

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import EntryContext from "../../../context/entries/entryContext";
 import ManageResourceCard from "./ManageResourceCard";
 import Pagination from "../../entries/entry-parts/Pagination";
@@ -45,6 +45,10 @@ const ManageEntries = ({ match }) => {
       )}
     </div>
   );
+};
+
+ManageEntries.propTypes = {
+  match: PropTypes.object
 };
 
 export default ManageEntries;

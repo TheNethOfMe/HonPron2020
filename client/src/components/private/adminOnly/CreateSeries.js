@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import SeriesContext from "../../../context/series/seriesContext";
 import TextEntry from "../../form-parts/TextEntry";
 import SelectType from "../../form-parts/SelectType";
@@ -102,6 +102,10 @@ const CreateSeries = ({ match }) => {
       </div>
     </div>
   );
+};
+
+CreateSeries.propTypes = {
+  match: PropTypes.object
 };
 
 export default CreateSeries;

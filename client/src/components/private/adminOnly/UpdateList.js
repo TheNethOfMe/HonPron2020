@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-
+import PropTypes from "prop-types";
 // Context
 import GameListContext from "../../../context/gamelist/gamelistContext";
 // Form Parts
@@ -84,6 +84,10 @@ const UpdateList = ({ match }) => {
       </div>
     </div>
   );
+};
+
+UpdateList.propTypes = {
+  match: PropTypes.object.isRequired
 };
 
 export default UpdateList;
