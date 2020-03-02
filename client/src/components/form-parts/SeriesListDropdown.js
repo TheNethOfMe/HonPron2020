@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-
+import PropTypes from "prop-types";
 import SeriesContext from "../../context/series/seriesContext";
 
 const GameListDropdown = ({ type, label, name, value, onChange }) => {
@@ -26,6 +26,14 @@ const GameListDropdown = ({ type, label, name, value, onChange }) => {
       </select>
     </div>
   );
+};
+
+GameListDropdown.propTypes = {
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default GameListDropdown;

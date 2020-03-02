@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextEntry = ({
+const NumberEntry = ({
   name,
   id = `hp ${name}`,
   placeholder,
   value,
   label,
-  type = "text",
   info,
   onChange,
   disabled = false
@@ -18,7 +17,7 @@ const TextEntry = ({
         {label}
       </label>
       <input
-        type={type}
+        type="number"
         className="hp-input_field"
         placeholder={placeholder}
         name={name}
@@ -37,16 +36,15 @@ const TextEntry = ({
   );
 };
 
-TextEntry.propTypes = {
+NumberEntry.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number,
   label: PropTypes.string.isRequired,
-  type: PropTypes.string,
   info: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool
 };
 
-export default TextEntry;
+export default NumberEntry;

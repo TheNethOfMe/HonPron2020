@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-
+import PropTypes from "prop-types";
 import EntryContext from "../../context/entries/entryContext";
 
 import SinglePodcast from "../entries/single-entry/SinglePodcast";
@@ -28,6 +28,10 @@ const SingleEntry = ({ match }) => {
       display = "No Entry to Display.";
   }
   return <div className="single-entry">{display}</div>;
+};
+
+SingleEntry.propTypes = {
+  match: PropTypes.object.isRequired
 };
 
 export default SingleEntry;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const TextArea = ({
   name,
@@ -7,7 +8,7 @@ const TextArea = ({
   label,
   info,
   onChange,
-  rows = 10
+  rows
 }) => {
   return (
     <div className="hp-input">
@@ -30,6 +31,16 @@ const TextArea = ({
       )}
     </div>
   );
+};
+
+TextArea.propTypes = {
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  info: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  rows: PropTypes.number
 };
 
 export default TextArea;

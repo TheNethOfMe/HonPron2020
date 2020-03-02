@@ -52,6 +52,7 @@ const SelectType = ({ name, type, onChange }) => {
 
 SelectType.propTypes = {
   name: PropTypes.string.isRequired,
+  type: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };
 

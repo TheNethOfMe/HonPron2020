@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-
+import PropTypes from "prop-types";
 import GameListContext from "../../context/gamelist/gamelistContext";
 
 const GameListDropdown = ({ label, name, value, onChange }) => {
@@ -26,6 +26,13 @@ const GameListDropdown = ({ label, name, value, onChange }) => {
       </select>
     </div>
   );
+};
+
+GameListDropdown.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default GameListDropdown;

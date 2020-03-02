@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
+import PropTypes from "prop-types";
 // Context
 import TicketContext from "../../../context/tickets/ticketContext";
 
@@ -59,6 +59,10 @@ const ViewComment = ({ match }) => {
       </button>
     </div>
   );
+};
+
+ViewComment.propTypes = {
+  match: PropTypes.object.isRequired
 };
 
 export default ViewComment;

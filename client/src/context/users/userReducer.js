@@ -1,7 +1,6 @@
 import { GET_ALL_USERS, UPDATE_USER_STATUS, DELETE_USER } from "../types";
 
 export default (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case GET_ALL_USERS:
       return {
