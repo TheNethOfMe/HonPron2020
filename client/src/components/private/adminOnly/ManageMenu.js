@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import MenuContext from "../../../context/menu/menuContext";
 import ManageMenuCard from "./ManageMenuCard";
@@ -15,7 +15,6 @@ const ManageMenu = () => {
 
   useEffect(() => {
     getMenu();
-    console.log("Get Menu");
     // eslint-disable-next-line
   }, []);
   const createItem = (id, newItem) => {

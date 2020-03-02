@@ -24,4 +24,8 @@ export const GET_UNFORMATTED_LIST = "GET_UNFORMATTED_LIST";
 export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
 export const GET_ONE_TICKET = "GET_ONE_TICKET";
 export const DELETE_TICKET = "DELETE_TICKET";
+
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
+export const DELETE_USER = "DELETE_USER";
 // export const START = "START";
