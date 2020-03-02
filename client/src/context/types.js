@@ -11,6 +11,9 @@ export const GET_ONE_SERIES = "GET_ONE_SERIES";
 export const DELETE_SERIES = "DELETE_SERIES";
 
 export const GET_MENU = "GET_MENU";
+export const ADD_MENU_ITEM = "ADD_MENU_ITEM";
+export const UPDATE_MENU_ITEM = "UPDATE_MENU_ITEM";
+export const DELETE_MENU_ITEM = "DELETE_MENU_ITEM";
 
 export const GET_FAQS = "GET_FAQS";
 

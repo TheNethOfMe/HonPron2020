@@ -2,6 +2,7 @@ import React from "react";
 
 const TextEntry = ({
   name,
+  id = `hp ${name}`,
   placeholder,
   value,
   label,
@@ -20,14 +21,14 @@ const TextEntry = ({
         className="hp-input_field"
         placeholder={placeholder}
         name={name}
-        id={name}
+        id={id}
         value={value}
         onChange={onChange}
         disabled={disabled}
-        aria-describedby={`hp-${name}`}
+        aria-describedby={!!info ? `${id}-desc` : ""}
       />
       {info && (
-        <p className="hp-input_info" id={`hp-${name}`}>
+        <p className="hp-input_info" id={`${id}-desc`}>
           {info}
         </p>
       )}
