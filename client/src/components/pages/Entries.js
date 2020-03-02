@@ -16,7 +16,7 @@ const Entries = ({ match }) => {
     getEntries(query);
     window.scrollTo(0, 0);
     // eslint-disable-next-line
-  }, [page]);
+  }, [page, match.params.type]);
   return (
     <Fragment>
       <EntryList entries={entries} />
