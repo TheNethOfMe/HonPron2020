@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   getMenu,
   createMenuItem,
+  updateMenuItem,
   deleteMenuItem
 } = require("../controllers/menu");
 
@@ -13,6 +14,9 @@ router
   .get(getMenu)
   .post(protect, adminOnly(), createMenuItem);
 
-router.delete("/:id", protect, adminOnly(), deleteMenuItem);
+router
+  .route("/:id")
+  .put(protect, adminOnly(), updateMenuItem)
+  .delete(protect, adminOnly(), deleteMenuItem);
 
 module.exports = router;

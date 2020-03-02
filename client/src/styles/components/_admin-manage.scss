@@ -76,3 +76,31 @@
     color: $snes-purple;
   }
 }
+
+.admin-manage_menucard {
+  @extend %card-stock;
+  h3 {
+    font-family: $main-font;
+  }
+}
+
+.admin-manage_ordered {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-manage_ordered-fields {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  div {
+    margin: 6px;
+  }
+}
+
+.admin-manage_smlfields {
+  width: 100px;
+  div {
+    margin: 6px;
+  }
+}

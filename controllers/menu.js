@@ -18,6 +18,22 @@ exports.createMenuItem = asyncHandler(async (req, res, next) => {
   res.status(201).json({ success: true, data: menu });
 });
 
+// @desc    Update a Menu Item
+// @route   PUT /api/v1/menu/:id
+// @access  Private/Admin
+exports.updateMenuItem = asyncHandler(async (req, res, next) => {
+  const menu = await Menu.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+  if (!menu) {
+    return next(
+      new ErrorResponse(`Menu item not found with id of ${req.params.id}`, 404)
+    );
+  }
+  res.status(200).json({ success: true, data: menu });
+});
+
 // @desc    Delete one Menu Item
 // @route   DELETE /api/v1/menu/:id
 // @access  Private/Admin
