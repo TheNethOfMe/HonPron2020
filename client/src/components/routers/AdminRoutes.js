@@ -11,6 +11,7 @@ import UpdateList from "../private/adminOnly/UpdateList";
 import ViewComment from "../private/adminOnly/ViewComment";
 import ManageMenu from "../private/adminOnly/ManageMenu";
 import ManageUsers from "../private/adminOnly/ManageUsers";
+import ModerateComments from "../private/adminOnly/ModerateComments";
 // contexts
 import SeriesState from "../../context/series/seriesState";
 import EntryState from "../../context/entries/entryState";
@@ -18,6 +19,7 @@ import GameListState from "../../context/gamelist/gamelistState";
 import TicketState from "../../context/tickets/ticketState";
 import MenuState from "../../context/menu/menuState";
 import UserState from "../../context/users/userState";
+import CommentState from "../../context/comments/commentState";
 
 const AdminRoutes = () => {
   return (
@@ -93,6 +95,12 @@ const AdminRoutes = () => {
         path="/manage-users"
         component={ManageUsers}
         context={UserState}
+      />
+      <AdminComponent
+        exact
+        path="/moderate-comments"
+        component={ModerateComments}
+        context={CommentState}
       />
     </Fragment>
   );

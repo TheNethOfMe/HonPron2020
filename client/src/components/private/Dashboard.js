@@ -30,6 +30,9 @@ const Dashboard = () => {
           <Link to="/manage-users" className="dashboard_btn">
             Manage Users
           </Link>
+          <Link to="/moderate-comments" className="dashboard_btn">
+            Moderate Comments
+          </Link>
         </Fragment>
       ) : (
         <Fragment>User Area</Fragment>

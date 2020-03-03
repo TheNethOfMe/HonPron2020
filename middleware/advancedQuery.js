@@ -1,5 +1,6 @@
 const Entry = require("../models/Entry");
 const Series = require("../models/Series");
+const Comment = require("../models/Comment");
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -65,7 +66,7 @@ exports.advancedQuery = model => async (req, res, next) => {
   removeFields.forEach(param => delete reqQuery[param]);
 
   // Construct query
-  queryObj = formatQuery(reqQuery, req.query.search);
+  queryObj = formatQuery(reqQuery);
   if (req.query.search) {
     queryObj.games = { $regex: req.query.search, $options: "i" };
   }
@@ -112,7 +113,7 @@ exports.advancedEntries = () => async (req, res, next) => {
   removeFields.forEach(param => delete reqQuery[param]);
 
   // Construct query
-  queryObj = formatQuery(reqQuery, req.query.search);
+  queryObj = formatQuery(reqQuery);
   if (req.query.search) {
     queryObj.games = { $regex: req.query.search, $options: "i" };
   }
@@ -182,7 +183,6 @@ exports.advancedSeries = () => async (req, res, next) => {
   // Construct query for match property
   let queryObj;
   queryObj = formatQuery(reqQuery);
-  // queryObj.series = new ObjectId(req.params.id);
 
   // Start constructing populate params
   let populateParams = {
@@ -225,6 +225,62 @@ exports.advancedSeries = () => async (req, res, next) => {
     count: series.entries.length,
     pagination,
     data: series
+  };
+  next();
+};
+
+// Returns comments with pertaining entry title and user name
+exports.advancedComments = () => async (req, res, next) => {
+  let query;
+  let queryObj;
+
+  // Copy request query and remove certain fields
+  const reqQuery = { ...req.query };
+  removeFields.forEach(param => delete reqQuery[param]);
+
+  // Construct Query
+  queryObj = formatQuery(reqQuery);
+  query = Comment.find(queryObj);
+
+  // Add select and sort, do not include blog data in multi-entry search
+  const selectAndSort = formatSelectAndSort(req.query.select, req.query.sort);
+  if (selectAndSort.select) {
+    query = query.select(selectAndSort.select);
+  }
+  query = query.sort(selectAndSort.sort);
+
+  // Populate comments with data from other models
+  query.populate([
+    {
+      path: "user",
+      select: "name"
+    },
+    {
+      path: "entry",
+      select: "title"
+    }
+  ]);
+
+  // Pagination
+  const pageData = await createPaginationData(
+    req.query.page,
+    req.query.limit,
+    queryObj,
+    Comment
+  );
+  query = query.skip(pageData.startIndex).limit(pageData.limit);
+
+  // Execute query
+  const results = await query;
+
+  // Pagination result
+  const pagination = returnPagination(pageData);
+
+  res.advancedData = {
+    success: true,
+    count: results.length,
+    pagination,
+    data: results
   };
   next();
 };

@@ -40,6 +40,9 @@ exports.createComment = asyncHandler(async (req, res, next) => {
     entry: req.params.entryId,
     user: req.user.id
   };
+  if (req.body.series) {
+    comment.series = req.body.series;
+  }
   await Comment.create({ colorCode, ...comment });
   res.status(201).json({ success: true, data: comment });
 });
@@ -48,7 +51,6 @@ exports.createComment = asyncHandler(async (req, res, next) => {
 // @route   PUT /api/v1/comments/:id
 // @access  Private/Admin
 exports.updateComment = asyncHandler(async (req, res, next) => {
-  console.log("Hit");
   const comment = await Comment.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
