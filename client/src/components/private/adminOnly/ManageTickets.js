@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import TicketContext from "../../../context/tickets/ticketContext";
 import ManageResourceCard from "./ManageResourceCard";
+import AdminTabs from "./AdminTabs";
 import Pagination from "../../entries/entry-parts/Pagination";
 
 const ManageTickets = () => {
@@ -37,38 +38,11 @@ const ManageTickets = () => {
   return (
     <div className="admin-manage">
       <h2>Manage User Messages</h2>
-      <div className="admin-tabs">
-        <button
-          onClick={() => tabSelect("open")}
-          className={
-            tab === "open" ? "admin-tab-btn selected" : "admin-tab-btn"
-          }
-        >
-          Open
-        </button>
-        <button
-          onClick={() => tabSelect("closed")}
-          className={
-            tab === "closed" ? "admin-tab-btn selected" : "admin-tab-btn"
-          }
-        >
-          Closed
-        </button>
-        <button
-          onClick={() => tabSelect("yellow")}
-          className={
-            tab === "yellow" ? "admin-tab-btn selected" : "admin-tab-btn"
-          }
-        >
-          Yellow
-        </button>
-        <button
-          onClick={() => tabSelect("red")}
-          className={tab === "red" ? "admin-tab-btn selected" : "admin-tab-btn"}
-        >
-          Red
-        </button>
-      </div>
+      <AdminTabs
+        tab={tab}
+        tabSelect={tabSelect}
+        tabList={["open", "closed", "yellow", "red"]}
+      />
       {tickets.map(ticket => (
         <ManageResourceCard
           key={ticket._id}

@@ -28,4 +28,7 @@ export const DELETE_TICKET = "DELETE_TICKET";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
 export const DELETE_USER = "DELETE_USER";
+
+export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
+export const DELETE_COMMENT = "DELETE_COMMENT";
 // export const START = "START";
