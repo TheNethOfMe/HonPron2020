@@ -1,14 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import EntryContext from "../../context/entries/entryContext";
+import CommentState from "../../context/comments/commentState";
 
 import SinglePodcast from "../entries/single-entry/SinglePodcast";
 import SingleVideo from "../entries/single-entry/SingleVideo";
 import SingleBlog from "../entries/single-entry/SingleBlog";
+import CommentSection from "../entries/single-entry/CommentSection";
+import Loading from "../base/Loading";
 
 const SingleEntry = ({ match }) => {
   const entryContext = useContext(EntryContext);
-  const { single, getOneEntry } = entryContext;
+  const { single, comments, getOneEntry } = entryContext;
   useEffect(() => {
     getOneEntry(match.params.id);
     // eslint-disable-next-line
@@ -27,7 +30,24 @@ const SingleEntry = ({ match }) => {
     default:
       display = "No Entry to Display.";
   }
-  return <div className="single-entry">{display}</div>;
+  return (
+    <div className="single-entry">
+      {!Object.keys(single).length ? (
+        <Loading />
+      ) : (
+        <Fragment>
+          {display}
+          <CommentState>
+            <CommentSection
+              comments={comments}
+              entryId={single._id}
+              seriesId={single.series.id}
+            />
+          </CommentState>
+        </Fragment>
+      )}
+    </div>
+  );
 };
 
 SingleEntry.propTypes = {

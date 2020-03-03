@@ -7,9 +7,11 @@ import { GET_ENTRIES, GET_SINGLE_ENTRY, DELETE_ENTRY } from "../types";
 
 const EntryState = props => {
   const initialState = {
+    loading: false,
     entries: [],
     single: {},
-    pagination: {}
+    pagination: {},
+    comments: []
   };
 
   const [state, dispatch] = useReducer(entryReducer, initialState);
@@ -120,6 +122,7 @@ const EntryState = props => {
         entries: state.entries,
         single: state.single,
         pagination: state.pagination,
+        comments: state.comments,
         getEntries,
         getOneEntry,
         createEntry,

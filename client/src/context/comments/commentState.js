@@ -31,6 +31,14 @@ const CommentState = props => {
     }
   };
 
+  const createComment = async (entryId, commentData) => {
+    try {
+      await axios.post(`/api/v1/entries/${entryId}/comment`, commentData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const approveComment = async id => {
     try {
       await axios.put(`/api/v1/comments/${id}`, {
@@ -63,6 +71,7 @@ const CommentState = props => {
         comments: state.comments,
         pagination: state.pagination,
         getComments,
+        createComment,
         approveComment,
         deleteComment
       }}

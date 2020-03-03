@@ -11,7 +11,8 @@ export default (state, action) => {
     case GET_SINGLE_ENTRY:
       return {
         ...state,
-        single: action.payload.data
+        single: action.payload.data,
+        comments: action.payload.data.comments
       };
     case DELETE_ENTRY:
       return {
