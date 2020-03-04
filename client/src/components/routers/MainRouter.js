@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 
+import NoAuthComponent from "../routers/NoAuthComponent";
 import PrivateComponent from "../routers/PrivateComponent";
 import MenuComponent from "../routers/MenuComponent";
 
@@ -74,7 +75,7 @@ const MainRouter = () => {
           component={Contact}
           context={TicketState}
         />
-        <Route exact path="/login" component={Login} />
+        <NoAuthComponent exact path="/login" component={Login} />
         <PrivateComponent
           exact
           path="/dashboard"
