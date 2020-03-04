@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import FaqContext from "../../../context/about/faqContext";
 // Form Parts
 import TextEntry from "../../form-parts/TextEntry";
-import NumberEntry from "../../form-parts/NumberEntry";
 import TextArea from "../../form-parts/TextArea";
 
 const CreateFaq = ({ match }) => {
@@ -79,8 +78,9 @@ const CreateFaq = ({ match }) => {
             onChange={onChange}
             rows={4}
           />
-          <NumberEntry
+          <TextEntry
             name="order"
+            type="number"
             placeholder="Order"
             value={order}
             label="Order"

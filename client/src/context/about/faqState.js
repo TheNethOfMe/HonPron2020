@@ -29,7 +29,6 @@ const FaqState = props => {
   const getOneFaq = async id => {
     try {
       const res = await axios.get(`/api/v1/faqs/${id}`);
-      console.log(res.data);
       dispatch({
         type: GET_SINGLE_FAQ,
         payload: res.data
