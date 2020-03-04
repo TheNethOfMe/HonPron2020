@@ -12,6 +12,8 @@ import ViewComment from "../private/adminOnly/ViewComment";
 import ManageMenu from "../private/adminOnly/ManageMenu";
 import ManageUsers from "../private/adminOnly/ManageUsers";
 import ModerateComments from "../private/adminOnly/ModerateComments";
+import ManageFaqs from "../private/adminOnly/ManageFaqs";
+import CreateFaq from "../private/adminOnly/CreateFaq";
 // contexts
 import SeriesState from "../../context/series/seriesState";
 import EntryState from "../../context/entries/entryState";
@@ -20,6 +22,7 @@ import TicketState from "../../context/tickets/ticketState";
 import MenuState from "../../context/menu/menuState";
 import UserState from "../../context/users/userState";
 import CommentState from "../../context/comments/commentState";
+import FaqState from "../../context/about/faqState";
 
 const AdminRoutes = () => {
   return (
@@ -101,6 +104,24 @@ const AdminRoutes = () => {
         path="/moderate-comments"
         component={ModerateComments}
         context={CommentState}
+      />
+      <AdminComponent
+        exact
+        path="/manage-faqs"
+        component={ManageFaqs}
+        context={FaqState}
+      />
+      <AdminComponent
+        exact
+        path="/create-faq"
+        component={CreateFaq}
+        context={FaqState}
+      />
+      <AdminComponent
+        exact
+        path="/edit-faq/:id"
+        component={CreateFaq}
+        context={FaqState}
       />
     </Fragment>
   );

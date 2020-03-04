@@ -15,7 +15,7 @@ const ManageResourceCard = ({ linkTo, title, type, handleDelete }) => {
             </Link>
             <button
               onClick={() => setWarning(!isWarned)}
-              className="admin-manage_delete-btn"
+              className="hp-btn admin-manage_delete-btn"
             >
               Delete
             </button>
@@ -23,14 +23,11 @@ const ManageResourceCard = ({ linkTo, title, type, handleDelete }) => {
         </Fragment>
       ) : (
         <Fragment>
-          <h4>
+          <p className="admin-manage_warning-text">
             Are you absoultely sure you want to delete this? This action cannot
-            be undone.
-          </h4>
-          <h5>
-            Note that if you are deleting a series, all accociated entries will
-            also be erased.
-          </h5>
+            be undone. Note that if you are deleting a series, all accociated
+            entries will also be erased.
+          </p>
           <div className="admin-manage_btn-dash">
             <button
               onClick={handleDelete}
@@ -40,7 +37,7 @@ const ManageResourceCard = ({ linkTo, title, type, handleDelete }) => {
             </button>
             <button
               onClick={() => setWarning(!isWarned)}
-              className="admin-manage_update-btn"
+              className="hp-btn admin-manage_update-btn"
             >
               Cancel
             </button>

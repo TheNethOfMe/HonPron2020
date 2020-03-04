@@ -33,6 +33,9 @@ const Dashboard = () => {
           <Link to="/moderate-comments" className="dashboard_btn">
             Moderate Comments
           </Link>
+          <Link to="/manage-faqs" className="dashboard_btn">
+            Manage Faqs
+          </Link>
         </Fragment>
       ) : (
         <Fragment>User Area</Fragment>

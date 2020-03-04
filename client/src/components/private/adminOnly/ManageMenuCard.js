@@ -116,10 +116,10 @@ const ManageMenuCard = ({ item, handleDelete, handleSubmit, title }) => {
               Delete
             </button>
           </div>
-          <h4>
+          <p className="admin-manage_warning-text">
             Are you absoultely sure you want to delete this? This action cannot
             be undone.
-          </h4>
+          </p>
         </div>
       )}
     </div>
