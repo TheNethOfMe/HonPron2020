@@ -45,16 +45,16 @@ const ViewComment = ({ match }) => {
     history.push("/manage-tickets");
   };
   return (
-    <div className="hp-form">
-      <h2>{ticketData.subject}</h2>
+    <div className="hp-ticket">
+      <h2 className={`hp-ticket_status-${ticketData.colorCode}`}>
+        {ticketData.subject}
+      </h2>
       <h3>
         By {ticketData.author} on {ticketData.dateAdded}
       </h3>
-      <h4>
-        Status: {ticketData.colorCode} - {ticketData.closed ? "Closed" : "Open"}
-      </h4>
+      <h4>Status: {ticketData.closed ? "Closed" : "Open"}</h4>
       <p>{ticketData.text}</p>
-      <button onClick={() => changeStatus()}>
+      <button className="hp-btn hp-form_btn" onClick={() => changeStatus()}>
         {ticketData.closed ? "Mark as Open" : "Mark as Closed"}
       </button>
     </div>

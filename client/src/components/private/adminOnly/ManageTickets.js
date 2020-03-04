@@ -64,8 +64,3 @@ const ManageTickets = () => {
 };
 
 export default ManageTickets;
-
-/*
-
-
-*/

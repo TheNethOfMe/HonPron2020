@@ -68,3 +68,25 @@
   color: $accent-color;
   margin: 8px;
 }
+
+.hp-input_file {
+  @include btn-color($snes-purple, $snes-blue, $snes-lite, $background-color);
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+  width: 80%;
+  &:focus-within {
+    background: $snes-blue;
+    color: $background-color;
+    @include box-shadow(0px, 0px, 5px, 5px, $accent-color);
+    outline: none;
+  }
+}
+
+select {
+  font-family: $main-font;
+  font-weight: bold;
+  margin: 2em auto;
+  width: 90%;
+}

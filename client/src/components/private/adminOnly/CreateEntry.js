@@ -7,7 +7,6 @@ import SeriesState from "../../../context/series/seriesState";
 import GameListState from "../../../context/gamelist/gamelistState";
 // Form Parts
 import TextEntry from "../../form-parts/TextEntry";
-import NumberEntry from "../../form-parts/NumberEntry";
 import SelectType from "../../form-parts/SelectType";
 import TextArea from "../../form-parts/TextArea";
 import FileUpload from "../../form-parts/FileUpload";
@@ -128,8 +127,7 @@ const CreateEntry = ({ match }) => {
           />
           <FileUpload
             name="image"
-            label="Upload Image"
-            info="Upload series banner image"
+            label="Upload Entry Image"
             accept="image/jpg image/png"
             onChange={uploadFile}
           />
@@ -188,8 +186,10 @@ const CreateEntry = ({ match }) => {
           )}
           {selectedSeries === "SNEScapades" && (
             <Fragment>
-              <NumberEntry
+              <TextEntry
                 name="episode"
+                id={episode._id}
+                type="number"
                 placeholder="Episode Number"
                 value={episode}
                 label="Episode Number"

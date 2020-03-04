@@ -85,8 +85,7 @@ const CreateSeries = ({ match }) => {
           />
           <FileUpload
             name="image"
-            label="Upload Image"
-            info="Upload series banner image"
+            label="Upload Series Banner Image"
             accept="image/jpg image/png"
             onChange={uploadFile}
           />
