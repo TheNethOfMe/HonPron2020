@@ -16,6 +16,10 @@ export const UPDATE_MENU_ITEM = "UPDATE_MENU_ITEM";
 export const DELETE_MENU_ITEM = "DELETE_MENU_ITEM";
 
 export const GET_FAQS = "GET_FAQS";
+export const GET_SINGLE_FAQ = "GET_SINGLE_FAQ";
+export const CREATE_FAQ = "CREATE_FAQ";
+export const UPDATE_FAQ = "UPDATE_FAQ";
+export const DELETE_FAQ = "DELETE_FAQ";
 
 export const GET_CURRENT_LIST = "GET_CURRENT_LIST";
 export const GET_ALL_LISTS = "GET_ALL_LISTS";

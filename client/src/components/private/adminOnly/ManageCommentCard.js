@@ -36,10 +36,10 @@ const ManageCommentCard = ({ comment }) => {
         </Fragment>
       ) : (
         <Fragment>
-          <h4>
+          <p className="admin-manage_warning-text">
             Are you absoultely sure you want to delete this comment? This action
             cannot be undone.
-          </h4>
+          </p>
           <div className="admin-manage_btn-dash">
             <button
               onClick={() => deleteComment(comment._id)}

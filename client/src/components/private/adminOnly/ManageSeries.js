@@ -32,7 +32,7 @@ const ManageSeries = () => {
           handleDelete={() => onDelete(series._id)}
         />
       ))}
-      {!!Object.keys(seriesPage) && (
+      {!!Object.keys(seriesPage).length && (
         <Pagination
           page={page}
           pagination={seriesPage}

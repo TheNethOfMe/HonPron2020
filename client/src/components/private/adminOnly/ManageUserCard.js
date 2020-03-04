@@ -69,10 +69,10 @@ const ManageUserCard = ({ user }) => {
               Delete
             </button>
           </div>
-          <h4>
+          <p className="admin-manage_warning-text">
             Are you absoultely sure you want to delete a user? You probably
             shouldn't do this unless the user requested it.
-          </h4>
+          </p>
         </div>
       )}
     </div>

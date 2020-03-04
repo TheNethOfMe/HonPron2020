@@ -1,4 +1,4 @@
-button,
+/*button,*/
 input[type="submit"],
 input[type="reset"],
 .hp-btn {
@@ -25,8 +25,14 @@ input[type="reset"],
 
 .nav-btn {
   background-color: transparent;
-  color: $snes-lite;
-  padding: 0;
+  border: none;
+  color: $snes-gray;
+  font-family: $main-font;
+  font-size: 1em;
+  &:hover {
+    color: $snes-blue;
+    cursor: pointer;
+  }
 }
 
 .newlist-btn {

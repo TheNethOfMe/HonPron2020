@@ -9,7 +9,7 @@ const SnesListPodcast = ({ snesList }) => {
     <Fragment>
       <button
         onClick={() => toggleList(!isListVisable)}
-        className="single-entry-list-btn"
+        className="hp-btn single-entry-list-btn"
       >
         {isListVisable ? "Hide List" : "Show List"}
       </button>

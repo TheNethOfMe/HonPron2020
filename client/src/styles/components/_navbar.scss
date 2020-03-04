@@ -1,4 +1,5 @@
 .navbar {
+  display: flex;
   background: $card-color;
   border-bottom: $accent-color 3px solid;
   color: $text-color;
@@ -20,6 +21,7 @@
       }
     }
     .navbar_right ul {
+      align-items: center;
       display: flex;
       flex-direction: row;
       li {
