@@ -9,7 +9,9 @@ const AdminTabs = ({ tab, tabSelect, tabList }) => {
           key={`at-${tabListItem}`}
           onClick={() => tabSelect(tabListItem)}
           className={
-            tab === tabListItem ? "admin-tab-btn selected" : "admin-tab-btn"
+            tab === tabListItem
+              ? "hp-btn admin-tab-btn selected"
+              : "hp-btn admin-tab-btn"
           }
         >
           {tabListItem}

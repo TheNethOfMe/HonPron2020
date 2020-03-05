@@ -10,11 +10,17 @@ const GameListDropdown = ({ label, name, value, onChange }) => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="hp-input">
+    <div>
       <label className="hp-input_label" htmlFor={name}>
         {label}
       </label>
-      <select name={name} id={name} value={value} onChange={onChange}>
+      <select
+        className="hp-input"
+        name={name}
+        id={name}
+        value={value}
+        onChange={onChange}
+      >
         <option value="">Select A List</option>
         {allLists.map(list => {
           return (

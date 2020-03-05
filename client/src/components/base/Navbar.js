@@ -26,7 +26,7 @@ const Navbar = ({ user, handleLogout }) => {
                   Logout
                 </button>
               ) : (
-                <Link to="/">Register</Link>
+                <Link to="/register">Register</Link>
               )}
             </li>
           </ul>

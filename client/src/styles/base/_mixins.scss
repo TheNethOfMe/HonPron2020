@@ -7,9 +7,11 @@
 @mixin btn-color($color, $hover, $text, $text-hover) {
   background: $color;
   color: $text;
+  transition: 0.5s;
   &:hover,
   &:focus {
     background: $hover;
     color: $text-hover;
+    cursor: pointer;
   }
 }

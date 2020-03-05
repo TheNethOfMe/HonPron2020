@@ -1,0 +1,27 @@
+.hp-ticket {
+  @extend %card-stock;
+  line-height: 1.6em;
+  h2 {
+    font-family: $main-font;
+    font-size: 2em;
+    padding: 4px;
+  }
+  h3 {
+    color: $accent-color;
+    font-family: $main-font;
+    font-size: 1.2em;
+    padding: 4px;
+  }
+}
+
+.hp-ticket_status-blue {
+  color: $hp-blue;
+}
+
+.hp-ticket_status-yellow {
+  color: $hp-yellow;
+}
+
+.hp-ticket_status-red {
+  color: $hp-red;
+}

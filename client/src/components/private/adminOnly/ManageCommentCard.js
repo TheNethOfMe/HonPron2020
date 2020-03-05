@@ -9,7 +9,7 @@ const ManageCommentCard = ({ comment }) => {
   const displayDate = `${jsDate.getMonth() +
     1}/${jsDate.getDate()}/${jsDate.getFullYear()}`;
   return (
-    <div className="admin-manage_card admin-manage_card-video">
+    <div className="admin-manage_card admin-manage_card-podcast">
       {!isWarned ? (
         <Fragment>
           <h3>{comment.text}</h3>
@@ -21,14 +21,14 @@ const ManageCommentCard = ({ comment }) => {
             {!comment.isApproved && (
               <button
                 onClick={() => approveComment(comment._id)}
-                className="admin-manage_update-btn"
+                className="hp-btn admin-manage_update-btn"
               >
                 Approve
               </button>
             )}
             <button
               onClick={() => setWarning(true)}
-              className="admin-manage_delete-btn"
+              className="hp-btn admin-manage_delete-btn"
             >
               Delete
             </button>
@@ -49,7 +49,7 @@ const ManageCommentCard = ({ comment }) => {
             </button>
             <button
               onClick={() => setWarning(!isWarned)}
-              className="admin-manage_update-btn"
+              className="hp-btn admin-manage_update-btn"
             >
               Cancel
             </button>

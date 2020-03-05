@@ -40,6 +40,14 @@ const ManageMenuCard = ({ item, handleDelete, handleSubmit, title }) => {
       });
     }
   };
+  const clearFields = () => {
+    setField({
+      displayText: "",
+      menuType: "",
+      url: "",
+      order: ""
+    });
+  };
   return (
     <div className="admin-manage_menucard">
       <h3>{title}</h3>
@@ -51,10 +59,14 @@ const ManageMenuCard = ({ item, handleDelete, handleSubmit, title }) => {
             </button>
             <button
               type="button"
-              onClick={() => setWarning(!isWarned)}
-              className="admin-manage_delete-btn"
+              onClick={
+                item._id === "new"
+                  ? () => clearFields()
+                  : () => setWarning(!isWarned)
+              }
+              className="hp-btn admin-manage_delete-btn"
             >
-              Delete
+              {item._id === "new" ? "Clear" : "Delete"}
             </button>
           </div>
           <div className="admin-manage_ordered-fields">
@@ -104,7 +116,7 @@ const ManageMenuCard = ({ item, handleDelete, handleSubmit, title }) => {
             <button
               type="button"
               onClick={() => setWarning(!isWarned)}
-              className="admin-manage_update-btn"
+              className="hp-btn admin-manage_update-btn"
             >
               Cancel
             </button>

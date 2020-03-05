@@ -1,7 +1,6 @@
 import { GET_FAQS, GET_SINGLE_FAQ, DELETE_FAQ, CREATE_FAQ } from "../types";
 
 export default (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case GET_FAQS:
       return {

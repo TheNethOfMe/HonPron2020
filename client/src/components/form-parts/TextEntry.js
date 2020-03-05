@@ -7,7 +7,7 @@ const TextEntry = ({
   placeholder,
   value,
   label,
-  type = "text",
+  type,
   info,
   onChange,
   disabled = false
@@ -41,7 +41,7 @@ TextEntry.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
   info: PropTypes.string,

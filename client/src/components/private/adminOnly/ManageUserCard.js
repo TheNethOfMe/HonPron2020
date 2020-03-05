@@ -25,7 +25,7 @@ const ManageUserCard = ({ user }) => {
             <button
               type="button"
               onClick={() => setWarning(!isWarned)}
-              className="admin-manage_delete-btn"
+              className="hp-btn admin-manage_delete-btn"
             >
               Delete
             </button>
@@ -33,11 +33,12 @@ const ManageUserCard = ({ user }) => {
           <div className="admin-manage_ordered-fields">
             <h2>{name}</h2>
             <h3>Email: {email}</h3>
-            <div className="hp-input">
+            <div>
               <label className="hp-input_label" htmlFor="status">
                 Set Status
               </label>
               <select
+                className="hp-input"
                 name="status"
                 id="status"
                 value={status}
@@ -57,7 +58,7 @@ const ManageUserCard = ({ user }) => {
             <button
               type="button"
               onClick={() => setWarning(!isWarned)}
-              className="admin-manage_update-btn"
+              className="hp-btn admin-manage_update-btn"
             >
               Cancel
             </button>
@@ -69,7 +70,7 @@ const ManageUserCard = ({ user }) => {
               Delete
             </button>
           </div>
-          <p className="admin-manage_warning-text">
+          <p className="hp-btn admin-manage_warning-text">
             Are you absoultely sure you want to delete a user? You probably
             shouldn't do this unless the user requested it.
           </p>
