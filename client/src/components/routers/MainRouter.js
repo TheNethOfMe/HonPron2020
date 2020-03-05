@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 import NoAuthComponent from "../routers/NoAuthComponent";
 import PrivateComponent from "../routers/PrivateComponent";
@@ -20,7 +20,9 @@ import FaqState from "../../context/about/faqState";
 import TicketState from "../../context/tickets/ticketState";
 
 import Login from "../auth/Login";
+import Register from "../auth/Register";
 import Dashboard from "../private/Dashboard";
+import UpdateProfile from "../private/userArea/UpdateProfile";
 import AdminRoutes from "./AdminRoutes";
 
 const MainRouter = () => {
@@ -76,10 +78,17 @@ const MainRouter = () => {
           context={TicketState}
         />
         <NoAuthComponent exact path="/login" component={Login} />
+        <NoAuthComponent exact path="/register" component={Register} />
         <PrivateComponent
           exact
           path="/dashboard"
           component={Dashboard}
+          context={Fragment}
+        />
+        <PrivateComponent
+          exact
+          path="/update-profile"
+          component={UpdateProfile}
           context={Fragment}
         />
         <AdminRoutes />

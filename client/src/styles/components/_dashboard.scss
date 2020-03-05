@@ -16,7 +16,6 @@
 }
 
 .dashboard_btn {
-  background-color: $hp-green;
   border-radius: 5px;
   display: block;
   font-family: $main-font;
@@ -30,4 +29,12 @@
     background-color: $hp-red;
     color: $snes-lite;
   }
+}
+
+.admin-dash {
+  background-color: $hp-green;
+}
+
+.user-dash {
+  background-color: $hp-red;
 }

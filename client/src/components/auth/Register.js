@@ -5,16 +5,18 @@ import TextEntry from "../form-parts/TextEntry";
 
 const Login = () => {
   const authContext = useContext(AuthContext);
-  const { loginUser } = authContext;
+  const { registerUser } = authContext;
 
   const [userFields, setFields] = useState({
+    username: "",
     email: "",
-    password: ""
+    password: "",
+    password2: ""
   });
 
   const [error, setError] = useState("");
 
-  const { email, password } = userFields;
+  const { username, email, password, password2 } = userFields;
 
   const onChange = e => {
     setError("");
@@ -23,20 +25,27 @@ const Login = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (!email || !password) {
-      setError("You need to enter an email and password.");
+    if (password !== password2) {
+      setError("Passwords must match.");
     } else {
-      loginUser(email, password);
+      registerUser(username, email, password);
     }
   };
 
   return (
     <div className="hp-form">
       <div className="hp-form_container">
-        <h2>Login</h2>
-        <h3>Sign into your Honest Piranha user account.</h3>
+        <h2>Register</h2>
+        <h3>Create a new Honest Piranha user account.</h3>
         {!!error && <p className="error-text">{error}</p>}
         <form onSubmit={onSubmit}>
+          <TextEntry
+            name="username"
+            placeholder="User Name"
+            value={username}
+            label="User Name"
+            onChange={onChange}
+          />
           <TextEntry
             name="email"
             placeholder="Email"
@@ -50,6 +59,14 @@ const Login = () => {
             placeholder="Password"
             value={password}
             label="Password"
+            onChange={onChange}
+          />
+          <TextEntry
+            name="password2"
+            type="password"
+            placeholder="Verify Password"
+            value={password2}
+            label="Verify Password"
             onChange={onChange}
           />
           <input className="hp-form_btn" type="submit" value="Login" />

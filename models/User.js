@@ -43,21 +43,7 @@ const UserSchema = new mongoose.Schema({
 UserSchema.pre("save", async function(next) {
   // Force email addresses to lowercase for consitancy
   this.email = this.email.toLowerCase();
-  // Ensure user is on the whitelist
-  const whiteListed = await this.model("Whitelist").findOneAndUpdate(
-    {
-      email: this.email
-    },
-    { isActivated: true }
-  );
-  if (!whiteListed) {
-    return next(
-      new ErrorResponse(
-        "Sorry, but you must be on the list to set up an account.",
-        403
-      )
-    );
-  }
+
   // Make sure username is acceptable
   const code = colorCoding(this.name);
   if (code !== "blue") {

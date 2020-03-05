@@ -65,7 +65,8 @@ exports.logout = asyncHandler(async (req, res, next) => {
 exports.getMe = asyncHandler(async (req, res, next) => {
   const user = {
     id: req.user._id,
-    name: req.user.name
+    name: req.user.name,
+    email: req.user.email
   };
   if (req.user.status === "admin") user.status = "admin";
   res.status(200).json({ success: true, data: user });

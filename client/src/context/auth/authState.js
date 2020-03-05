@@ -47,6 +47,51 @@ const AuthState = props => {
       setUser(jwtDecode(res.data.token));
     } catch (err) {
       console.log(err);
+      setLoading(false);
+    }
+  };
+
+  // Register User
+  const registerUser = async (username, email, password) => {
+    setLoading(true);
+    const config = {
+      headers: { "Content-Type": "application/json" }
+    };
+    try {
+      const res = await axios.post(
+        "/api/v1/auth/register",
+        { name: username, email, password },
+        config
+      );
+      Cookies.set("hpAuth", res.data.token, { expires: 2, path: "/" });
+      setUser(jwtDecode(res.data.token));
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
+
+  // Update User Details
+  const updateUserDetails = async fields => {
+    setLoading(true);
+    try {
+      const res = await axios.put("/api/v1/auth/updatedetails", fields);
+      setUser(res.data.data);
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
+
+  // Update Password
+  const updatePassword = async fields => {
+    setLoading(true);
+    try {
+      await axios.put("/api/v1/auth/updatepassword", fields);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
     }
   };
 
@@ -58,6 +103,7 @@ const AuthState = props => {
       setUser(res.data.data);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
@@ -85,6 +131,9 @@ const AuthState = props => {
         isAuthenticated: state.isAuthenticated,
         setLoading,
         loginUser,
+        registerUser,
+        updateUserDetails,
+        updatePassword,
         getUser,
         logoutUser
       }}
