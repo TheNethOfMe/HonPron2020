@@ -1,4 +1,4 @@
-import { LOGOUT, AUTH_LOADING, SET_USER } from "../types";
+import { LOGOUT, AUTH_LOADING, SET_USER, SET_ERROR } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ export default (state, action) => {
       return {
         ...state,
         loading: action.payload
+      };
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     case SET_USER:
       return {

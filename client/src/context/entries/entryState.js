@@ -1,11 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import EntryContext from "./entryContext";
 import entryReducer from "./entryReducer";
+import AuthContext from "../auth/authContext";
 import { GET_ENTRIES, GET_SINGLE_ENTRY, DELETE_ENTRY } from "../types";
 
 const EntryState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     loading: false,
     entries: [],
@@ -30,7 +33,7 @@ const EntryState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -43,7 +46,7 @@ const EntryState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -71,7 +74,7 @@ const EntryState = props => {
         headers: { "Context-Type": "multipart/form-data" }
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -99,7 +102,7 @@ const EntryState = props => {
         headers: { "Context-Type": "multipart/form-data" }
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -112,7 +115,7 @@ const EntryState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 

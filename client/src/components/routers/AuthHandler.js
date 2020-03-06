@@ -12,6 +12,7 @@ const AuthHandler = () => {
   const {
     isAuthenticated,
     user,
+    error,
     getUser,
     logoutUser,
     loading,
@@ -28,7 +29,7 @@ const AuthHandler = () => {
   return (
     <Router>
       <Fragment>
-        <Navbar user={user} handleLogout={logoutUser} />
+        <Navbar user={user} handleLogout={logoutUser} error={error} />
         <div className="site-container">
           {loading ? <Loading /> : <MainRouter />}
         </div>
