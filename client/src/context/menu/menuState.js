@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import MenuContext from "./menuContext";
 import menuReducer from "./menuReducer";
+import AuthContext from "../auth/authContext";
 import {
   GET_MENU,
   ADD_MENU_ITEM,
@@ -10,6 +11,8 @@ import {
 } from "../types";
 
 const MenuState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     menuItems: []
   };
@@ -25,7 +28,7 @@ const MenuState = props => {
         payload: res.data.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -38,7 +41,7 @@ const MenuState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -51,7 +54,7 @@ const MenuState = props => {
         payload: res.data.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -64,7 +67,7 @@ const MenuState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 

@@ -1,11 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import SeriesContext from "./seriesContext";
 import seriesReducer from "./seriesReducer";
+import AuthContext from "../auth/authContext";
 import { GET_ONE_SERIES, GET_ALL_SERIES, DELETE_SERIES } from "../types";
 
 const SeriesState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     allSeries: [],
     seriesPage: {},
@@ -30,7 +33,7 @@ const SeriesState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -48,7 +51,7 @@ const SeriesState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -65,7 +68,7 @@ const SeriesState = props => {
         headers: { "Context-Type": "multipart/form-data" }
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -78,7 +81,7 @@ const SeriesState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -93,7 +96,7 @@ const SeriesState = props => {
         headers: { "Context-Type": "multipart/form-data" }
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -106,7 +109,7 @@ const SeriesState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 

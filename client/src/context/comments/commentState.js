@@ -1,11 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import CommentContext from "./commentContext";
 import commentReducer from "./commentReducer";
+import AuthContext from "../auth/authContext";
 import { GET_ALL_COMMENTS, DELETE_COMMENT } from "../types";
 
 const CommentState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     comments: [],
     pagination: {}
@@ -27,7 +30,7 @@ const CommentState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -35,7 +38,7 @@ const CommentState = props => {
     try {
       await axios.post(`/api/v1/entries/${entryId}/comment`, commentData);
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -49,7 +52,7 @@ const CommentState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -61,7 +64,7 @@ const CommentState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
