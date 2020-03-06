@@ -1,0 +1,23 @@
+.comment-section {
+  border-top: 3px $accent-color solid;
+  h3 {
+    color: $accent-color;
+    font-family: $main-font;
+    font-size: 1.2em;
+    padding-top: 12px;
+    text-align: center;
+  }
+}
+
+.comment-section_single {
+  background-color: $background-color;
+  margin: 8px auto;
+  width: 80%;
+  h3 {
+    color: $hp-green;
+    font-size: 1em;
+  }
+  p {
+    padding: 4px;
+  }
+}

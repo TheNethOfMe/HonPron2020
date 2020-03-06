@@ -19,7 +19,7 @@ const CommentSection = ({ comments, entryId, seriesId }) => {
     createComment(entryId, commentData);
   };
   return (
-    <div>
+    <div className="comment-section">
       <h3>Comments</h3>
       {isAuthenticated ? (
         <form onSubmit={onSubmit}>
@@ -36,14 +36,14 @@ const CommentSection = ({ comments, entryId, seriesId }) => {
             onChange={e => updateText(e.target.value)}
             rows={3}
           />
-          <button>Create Comment</button>
+          <button className="hp-btn hp-form_btn">Create Comment</button>
         </form>
       ) : (
         <div>You must be logged in to leave a comment</div>
       )}
       {comments.length ? (
         comments.map(comment => (
-          <div key={comment.id}>
+          <div key={comment.id} className="comment-section_single">
             <h3>{comment.user} says:</h3>
             <p>{comment.text}</p>
           </div>
