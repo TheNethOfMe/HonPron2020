@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import GamelistContext from "./gamelistContext";
 import gamelistReducer from "./gamelistReducer";
+import AuthContext from "../auth/authContext";
 import {
   GET_CURRENT_LIST,
   GET_ALL_LISTS,
@@ -9,6 +10,8 @@ import {
 } from "../types";
 
 const GamelistState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     gamelist: [],
     allLists: [],
@@ -26,7 +29,7 @@ const GamelistState = props => {
         payload: res.data.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -39,7 +42,7 @@ const GamelistState = props => {
         payload: res.data.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -52,7 +55,7 @@ const GamelistState = props => {
         payload: res.data.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -63,7 +66,7 @@ const GamelistState = props => {
         headers: { "Context-Type": "multipart/form-data" }
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -85,7 +88,7 @@ const GamelistState = props => {
       );
       await axios.post(`/api/v1/gamelist`, newData);
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 

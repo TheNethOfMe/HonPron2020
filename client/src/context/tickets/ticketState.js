@@ -1,11 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import TicketContext from "./ticketContext";
 import ticketReducer from "./ticketReducer";
+import AuthContext from "../auth/authContext";
 import { GET_ALL_TICKETS, GET_ONE_TICKET, DELETE_TICKET } from "../types";
 
 const TicketState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     tickets: [],
     pagination: {},
@@ -28,7 +31,7 @@ const TicketState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -41,7 +44,7 @@ const TicketState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -50,7 +53,7 @@ const TicketState = props => {
     try {
       await axios.post("/api/v1/tickets", ticketData);
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -59,7 +62,7 @@ const TicketState = props => {
     try {
       await axios.put(`/api/v1/tickets/${id}`, updateFields);
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -72,7 +75,7 @@ const TicketState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 

@@ -4,13 +4,14 @@ import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
-import { LOGOUT, AUTH_LOADING, SET_USER } from "../types";
+import { LOGOUT, AUTH_LOADING, SET_USER, SET_ERROR } from "../types";
 
 const AuthState = props => {
   const initialState = {
     loading: true,
     user: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    error: ""
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -21,6 +22,21 @@ const AuthState = props => {
       type: AUTH_LOADING,
       payload: isLoading
     });
+  };
+
+  // Set Error
+  const setError = msg => {
+    setLoading(false);
+    dispatch({
+      type: SET_ERROR,
+      payload: msg
+    });
+    setTimeout(() => {
+      dispatch({
+        type: SET_ERROR,
+        payload: ""
+      });
+    }, 5000);
   };
 
   // Set User
@@ -46,8 +62,7 @@ const AuthState = props => {
       Cookies.set("hpAuth", res.data.token, { expires: 2, path: "/" });
       setUser(jwtDecode(res.data.token));
     } catch (err) {
-      console.log(err);
-      setLoading(false);
+      setError(`ERROR: ${err.response.data.error}`);
     }
   };
 
@@ -66,8 +81,7 @@ const AuthState = props => {
       Cookies.set("hpAuth", res.data.token, { expires: 2, path: "/" });
       setUser(jwtDecode(res.data.token));
     } catch (err) {
-      console.log(err);
-      setLoading(false);
+      setError(`ERROR: ${err.response.data.error}`);
     }
   };
 
@@ -78,8 +92,7 @@ const AuthState = props => {
       const res = await axios.put("/api/v1/auth/updatedetails", fields);
       setUser(res.data.data);
     } catch (err) {
-      console.log(err);
-      setLoading(false);
+      setError(`ERROR: ${err.response.data.error}`);
     }
   };
 
@@ -90,8 +103,7 @@ const AuthState = props => {
       await axios.put("/api/v1/auth/updatepassword", fields);
       setLoading(false);
     } catch (err) {
-      console.log(err);
-      setLoading(false);
+      setError(`ERROR: ${err.response.data.error}`);
     }
   };
 
@@ -102,8 +114,7 @@ const AuthState = props => {
       const res = await axios.get("/api/v1/auth/me");
       setUser(res.data.data);
     } catch (err) {
-      console.log(err);
-      setLoading(false);
+      setError(`ERROR: ${err.response.data.error}`);
     }
   };
 
@@ -119,7 +130,7 @@ const AuthState = props => {
         type: LOGOUT
       });
     } catch (err) {
-      console.log(err);
+      setError(`ERROR: ${err.response.data.error}`);
     }
   };
 
@@ -129,7 +140,9 @@ const AuthState = props => {
         loading: state.loading,
         user: state.user,
         isAuthenticated: state.isAuthenticated,
+        error: state.error,
         setLoading,
+        setError,
         loginUser,
         registerUser,
         updateUserDetails,

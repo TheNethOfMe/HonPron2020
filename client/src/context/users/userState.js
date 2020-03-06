@@ -1,11 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import stringifyQueryParams from "../../utils/stringifyQueryParams";
 import UserContext from "./userContext";
 import userReducer from "./userReducer";
+import AuthContext from "../auth/authContext";
 import { GET_ALL_USERS, UPDATE_USER_STATUS, DELETE_USER } from "../types";
 
 const UserState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     users: [],
     pagination: {}
@@ -27,7 +30,7 @@ const UserState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -40,7 +43,7 @@ const UserState = props => {
         payload: res.data.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -53,7 +56,7 @@ const UserState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 

@@ -1,10 +1,13 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import axios from "axios";
 import FaqContext from "./faqContext";
 import faqReducer from "./faqReducer";
+import AuthContext from "../auth/authContext";
 import { GET_FAQS, GET_SINGLE_FAQ, DELETE_FAQ } from "../types";
 
 const FaqState = props => {
+  const authContext = useContext(AuthContext);
+  const { setError } = authContext;
   const initialState = {
     faqs: [],
     singleFaq: {}
@@ -21,7 +24,7 @@ const FaqState = props => {
         payload: res.data.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -34,7 +37,7 @@ const FaqState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -43,7 +46,7 @@ const FaqState = props => {
     try {
       await axios.post("/api/v1/faqs", newFaq);
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -52,7 +55,7 @@ const FaqState = props => {
     try {
       await axios.put(`/api/v1/faqs/${id}`, updatedFields);
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
@@ -65,7 +68,7 @@ const FaqState = props => {
         payload: id
       });
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.error);
     }
   };
 
