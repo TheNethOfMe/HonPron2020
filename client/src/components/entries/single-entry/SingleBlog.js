@@ -6,7 +6,7 @@ import ListItemImg from "../entry-parts/ListItemImg";
 import BlogChunk from "../entry-parts/BlogChunk";
 
 const SingleBlog = ({ blog }) => {
-  const imgSrc = require(`../../../img/entry-img/${blog.image}`);
+  const imgSrc = `/image/entry-img/${blog.image}`;
   const jsDate = new Date(blog.dateAdded);
   const displayDate = `${jsDate.getMonth() +
     1}/${jsDate.getDate()}/${jsDate.getFullYear()}`;

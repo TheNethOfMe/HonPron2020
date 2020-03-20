@@ -2,7 +2,9 @@ const ErrorResponse = require("../utils/errorResponse");
 const path = require("path");
 const slugify = require("slugify");
 
-const uploadImg = (file, allFields, folder, field) => {
+const imgDir = "./images";
+
+const uploadImg = (file, allFields, folder, field, next) => {
   if (!file.mimetype.startsWith("image")) {
     return next(new ErrorResponse("Uploaded file must be an image", 400));
   }
@@ -19,7 +21,7 @@ const uploadImg = (file, allFields, folder, field) => {
   });
   file.name = `photo_${slug}${path.parse(file.name).ext}`;
   // Move image to proper folder
-  file.mv(`./client/src/img/${folder}/${file.name}`, async err => {
+  file.mv(`${imgDir}/${folder}/${file.name}`, async err => {
     if (err) {
       console.error(err);
       return next(new ErrorResponse("Problem uploading file.", 500));

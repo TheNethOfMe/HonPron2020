@@ -19,7 +19,13 @@ exports.createEntry = asyncHandler(async (req, res, next) => {
   let entryData = req.body;
   entryData.games = entryData.games.split(", ");
   if (req.files && req.files.file) {
-    entryData = uploadImg(req.files.file, entryData, "entry-img", "title");
+    entryData = uploadImg(
+      req.files.file,
+      entryData,
+      "entry-img",
+      "title",
+      next
+    );
   } else {
     entryData = {
       ...entryData,
@@ -93,7 +99,13 @@ exports.updateEntry = asyncHandler(async (req, res, next) => {
   let entryData = req.body;
   entryData.games = entryData.games.split(", ");
   if (req.files && req.files.file) {
-    entryData = uploadImg(req.files.file, entryData, "entry-img", "title");
+    entryData = uploadImg(
+      req.files.file,
+      entryData,
+      "entry-img",
+      "title",
+      next
+    );
   }
   const entry = await Entry.findByIdAndUpdate(req.params.id, entryData, {
     new: true,

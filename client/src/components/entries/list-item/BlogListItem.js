@@ -7,7 +7,7 @@ import ListItemDetails from "../entry-parts/ListItemDetails";
 import ListItemFooter from "../entry-parts/ListItemFooter";
 
 const BlogListItem = ({ entry }) => {
-  const srcImg = require(`../../../img/entry-img/${entry.image}`);
+  const srcImg = `/image/entry-img/$entry.image}`;
   return (
     <Fragment>
       <ListItemHead series={entry.series.series} icon="fas fa-pencil-alt" />
