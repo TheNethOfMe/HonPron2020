@@ -1,7 +1,6 @@
 const Series = require("../models/Series");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/asyncHandler");
-const uploadImg = require("../utils/uploadImg");
 
 // @desc    Get all Series
 // @route   GET /api/v1/series
@@ -15,15 +14,6 @@ exports.getSeries = asyncHandler(async (req, res, next) => {
 // @access  Private/Admin
 exports.createSeries = asyncHandler(async (req, res, next) => {
   let seriesData = req.body;
-  let fileData = req.files;
-  if (req.files && req.files.file) {
-    seriesData = uploadImg(
-      req.files.file,
-      seriesData,
-      "series-img",
-      "seriesName"
-    );
-  }
   const series = await Series.create(seriesData);
   res.status(201).json({ success: true, data: series });
 });

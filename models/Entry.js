@@ -30,7 +30,7 @@ const EntrySchema = new mongoose.Schema(
     games: {
       type: [String]
     },
-    image: {
+    imgURL: {
       type: String
     },
     imageAlt: {
