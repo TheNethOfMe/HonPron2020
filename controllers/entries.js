@@ -1,9 +1,7 @@
 const Entry = require("../models/Entry");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/asyncHandler");
-const path = require("path");
 const getFormattedGameList = require("../utils/getFormattedGameList");
-const uploadImg = require("../utils/uploadImg");
 
 // @desc    Get all Entries
 // @route   GET /api/v1/entries
@@ -18,21 +16,6 @@ exports.getEntries = asyncHandler(async (req, res, next) => {
 exports.createEntry = asyncHandler(async (req, res, next) => {
   let entryData = req.body;
   entryData.games = entryData.games.split(", ");
-  if (req.files && req.files.file) {
-    entryData = uploadImg(
-      req.files.file,
-      entryData,
-      "entry-img",
-      "title",
-      next
-    );
-  } else {
-    entryData = {
-      ...entryData,
-      image: "default.jpg",
-      imageAlt: "Default Image"
-    };
-  }
   const entry = await Entry.create(entryData);
   res.status(201).json({ success: true, data: entry });
 });
@@ -98,15 +81,6 @@ exports.getEntry = asyncHandler(async (req, res, next) => {
 exports.updateEntry = asyncHandler(async (req, res, next) => {
   let entryData = req.body;
   entryData.games = entryData.games.split(", ");
-  if (req.files && req.files.file) {
-    entryData = uploadImg(
-      req.files.file,
-      entryData,
-      "entry-img",
-      "title",
-      next
-    );
-  }
   const entry = await Entry.findByIdAndUpdate(req.params.id, entryData, {
     new: true,
     runValidators: true

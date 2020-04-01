@@ -8,8 +8,8 @@ import ListItemFooter from "../entry-parts/ListItemFooter";
 
 const PodcastListItem = ({ entry }) => {
   let srcImg, imgAlt;
-  if (!!entry.image) {
-    srcImg = `/image/entry-img/${entry.image}`;
+  if (!!entry.imgURL) {
+    srcImg = `https://lh3.googleusercontent.com/${entry.imgURL}`;
     imgAlt = entry.imageAlt;
   } else {
     srcImg = "/image/entry-img/test.jpg";

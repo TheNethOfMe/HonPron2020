@@ -7,7 +7,7 @@ import ListItemDetails from "../entry-parts/ListItemDetails";
 import SnesListPodcast from "../entry-parts/SnesListPodcast";
 
 const SinglePodcast = ({ podcast }) => {
-  const srcImg = `/image/entry-img/${podcast.image}`;
+  const srcImg = `https://lh3.googleusercontent.com/${podcast.imgURL}`;
   return (
     <Fragment>
       <ListItemHead series={podcast.series.seriesName} icon="fas fa-podcast" />
